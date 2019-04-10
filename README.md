@@ -23,6 +23,7 @@ A Figura abaixo ilustra o modelo de CI usado atualmente.
 ### Cronograma
 
 A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [Cultura Ágil](https://www.culturaagil.com.br/kanban-do-inicio-ao-fim/). Para isso, sugerimos a criação de atividades no menu [Issues](https://guides.github.com/features/issues/)
+
 | Data | Fase |
 | ------ | ------ |
 | 20/04/2019 | Atividade 1 |
