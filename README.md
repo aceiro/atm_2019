@@ -3,7 +3,7 @@
 
 
 
-# CI-APP: UM SISTEMA DE COMUNICADO INTERNO PARA A FACULDADE ASSER**
+# CI-APP: UM SISTEMA DE COMUNICADO INTERNO PARA A FACULDADE ASSER
 
 # Introdução
 
@@ -20,7 +20,22 @@ A Figura abaixo ilustra o modelo de CI usado atualmente.
 
 ![CI](ci.png)
 
-**DATA DA ENTREGA 08/06/2018**
-Para acompanhar o desenvolvimento detalhado dessa atividade acesse o [PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
+### Cronograma
+
+A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [Cultura Ágil](https://www.culturaagil.com.br/kanban-do-inicio-ao-fim/). Para isso, sugerimos a criação de atividades no menu [Issues](https://guides.github.com/features/issues/)
+
+| Data | Fase |
+| ------ | ------ |
+| 20/04/2019 | Atividade 1 |
+| 04/05/2019 | Atividade 2 |
+| 18/15/2019 | Atividade 3 |
+| 01/16/2019 | Atividade 4 |
+| 08/06/2019 | Entrega |
+
+
+### Fontes
+- [WebQuest em PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
+- [GitHub Issues](https://guides.github.com/features/issues/)
+- [GitHub Issues video (inglês)](https://www.youtube.com/watch?v=WMykv2ZMyEQ)
   
   
