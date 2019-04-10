@@ -3,11 +3,7 @@
 
 
 
-**CI-APP: UM SISTEMA DE COMUNICADO INTERNO PARA A FACULDADE ASSER**
-
-**BACHARELADO EM SISTEMAS DE INFORMAÇÃO**
-
-**1. PERÍODO 2019**
+# CI-APP: UM SISTEMA DE COMUNICADO INTERNO PARA A FACULDADE ASSER**
 
 # Introdução
 
@@ -19,5 +15,12 @@ portanto, para desenvolver as atividades siga as Sessões seguintes para poder c
 Em síntese, essa Webquest envolve as seguintes disciplinas do semestre atual de 2019: (i) Cálculo Diferencial e Integral II; (ii) Programação Orientada a Objetos; (iii) Programação de Computadores II; (iv) Economia; (v) Circuitos Lógicos; (vi) Algebra Linear; (vii) Relações Etnicas Raciais. 
   
 Esse projeto vista o desenvolvimento de um sistema para controle de comucação interna da Faculdade realizada através do formulário – CI (COMUNICADO INTERNO).
+
+A Figura abaixo ilustra o modelo de CI usado atualmente.
+
+![CI](ci.png)
+
+**DATA DA ENTREGA 08/06/2018**
+Para acompanhar o desenvolvimento detalhado dessa atividade acesse o [PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
   
   
