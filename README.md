@@ -20,7 +20,21 @@ A Figura abaixo ilustra o modelo de CI usado atualmente.
 
 ![CI](ci.png)
 
-**DATA DA ENTREGA 08/06/2018**
-Para acompanhar o desenvolvimento detalhado dessa atividade acesse o [PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
+### Cronograma
+
+A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [Cultura Ágil](https://www.culturaagil.com.br/kanban-do-inicio-ao-fim/). Para isso, sugerimos a criação de atividades no menu **Issues do GitHub**
+
+| Data | Fase |
+| ------ | ------ |
+| 20/04/2018 | Atividade 1 |
+| 04/05/2018 | Atividade 2 |
+| 18/15/2018 | Atividade 3 |
+| 01/16/2018 | Atividade 4 |
+| 08/06/2018 | Entrega |
+
+
+### Fontes
+- [WebQuest em PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
+- [FTP da Ativiade Multidisciplinar 2018](http://ftprc.asser.com.br/~eantonio/atm.html)
   
   
