@@ -36,5 +36,6 @@ A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [C
 ### Fontes
 - [WebQuest em PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
 - [GitHub Issues](https://guides.github.com/features/issues/)
+- [GitHub Issues video (inglês)](https://www.youtube.com/watch?v=WMykv2ZMyEQ)
   
   
