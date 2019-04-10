@@ -22,8 +22,7 @@ A Figura abaixo ilustra o modelo de CI usado atualmente.
 
 ### Cronograma
 
-A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [Cultura Ágil](https://www.culturaagil.com.br/kanban-do-inicio-ao-fim/). Para isso, sugerimos a criação de atividades no menu **Issues do GitHub**
-
+A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [Cultura Ágil](https://www.culturaagil.com.br/kanban-do-inicio-ao-fim/). Para isso, sugerimos a criação de atividades no menu [Issues](https://guides.github.com/features/issues/)
 | Data | Fase |
 | ------ | ------ |
 | 20/04/2019 | Atividade 1 |
@@ -35,6 +34,6 @@ A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [C
 
 ### Fontes
 - [WebQuest em PDF](ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf)
-- [FTP da Ativiade Multidisciplinar 2018](http://ftprc.asser.com.br/~eantonio/atm.html)
+- [GitHub Issues](https://guides.github.com/features/issues/)
   
   
