@@ -28,8 +28,8 @@ A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [C
 | ------ | ------ |
 | 20/04/2019 | Atividade 1 |
 | 04/05/2019 | Atividade 2 |
-| 18/15/2019 | Atividade 3 |
-| 01/16/2019 | Atividade 4 |
+| 18/05/2019 | Atividade 3 |
+| 01/06/2019 | Atividade 4 |
 | 08/06/2019 | Entrega |
 
 
