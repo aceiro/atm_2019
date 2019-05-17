@@ -6,7 +6,6 @@ Atividades   |   [Para Fazer](https://github.com/aceiro/atm_2019/issues?q=is%3Ai
 [# ISSUE4](https://github.com/aceiro/atm_2019/issues/4) | - | - | ✔ | [Gismar](https://github.com/gismarb)
 
 Estrutura com exemplos:
-
 ```
 CI-APP
 ├── App
