@@ -3,4 +3,4 @@ Atividades   |   [Para Fazer](https://github.com/aceiro/atm_2019/issues?q=is%3Ai
 [# ISSUE1](https://github.com/aceiro/atm_2019/issues/1) | ✔ | ✖ | ✖ | 
 [# ISSUE2](https://github.com/aceiro/atm_2019/issues/2) | - | - | ✔ | [Amanda](https://github.com/manddynhaa)
 [# ISSUE3](https://github.com/aceiro/atm_2019/issues/3) | ✔ | ✖ | ✖ | 
-[# ISSUE4](https://github.com/aceiro/atm_2019/issues/4) | ✔ | ✖ | ✖ | 
+[# ISSUE4](https://github.com/aceiro/atm_2019/issues/4) | - | - | ✔ | [Gismar](https://github.com/gismarb)
