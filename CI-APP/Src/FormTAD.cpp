@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../Include/Form.hpp"
 
 using std::cout;
