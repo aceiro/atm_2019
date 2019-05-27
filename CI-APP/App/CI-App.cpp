@@ -11,9 +11,12 @@ using std::endl;
 int main() {
   cout << endl << "\tATM 2019 - CI-APP" << endl << endl;
   cout << endl << "\tListagem de Funcoes" << endl << endl;
-
+  
+  Menu menu;
+  int x;
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Menu
-  Menu();
+  menu.setMenu(x);
+  cout << "Opcao escolhida" << menu.getMenu();
 
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Ajuda
   Help();
