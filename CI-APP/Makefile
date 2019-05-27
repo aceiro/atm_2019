@@ -35,7 +35,7 @@ libutils: $(OBJ)/Menu.o $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o
 
 # TAG 3
 # Generating library LibForm.a (static library). This library represents the CRUD form used for the Project scope's.
-libform: $(OBJ)/FormCreate.o $(OBJ)/FormUpdate.o $(OBJ)/FormSelect.o $(OBJ)/FormDelete.o
+libform: $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)TAD.o
 	ar -rcs $(LIB)/LibForm.a $(OBJ)/*.o
 
 # TAG 4
@@ -44,7 +44,7 @@ app: $(BIN)/CI-App
 
 
 # Filter for compilation of Form objects
-$(OBJ)/$(FORM)%.o: $(SRC)/$(FORM)%.cpp $(INCLUDE)/Form.hpp
+$(OBJ)/$(FORM)%.o: $(SRC)/$(FORM)%.cpp $(INCLUDE)/$(FORM).hpp
 	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -o $@
 
 # Filter for compilation of Utilities objects
@@ -66,5 +66,5 @@ run:
 clean:
 	rm $(BIN)/*
 	rm $(OBJ)/*.o
-
+	rm $(LIB)/*.a
 

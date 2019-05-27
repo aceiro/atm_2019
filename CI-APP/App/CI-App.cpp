@@ -12,27 +12,27 @@ int main() {
   cout << endl << "\tATM 2019 - CI-APP" << endl << endl;
   cout << endl << "\tListagem de Funcoes" << endl << endl;
   
-  Menu menu;
-  int x;
+  //Menu menu;
+  //int x;
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Menu
-  menu.setMenu(x);
-  cout << "Opcao escolhida" << menu.getMenu();
+  //menu.printMenu();
+  //cout << "Opcao escolhida " << menu.getMenu() << endl;
 
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Ajuda
-  Help();
+  //Help();
 
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Formulario de Dados
-  FormTAD();
-  FormCreate();
-  FormUpdate();
-  FormSelect();
-  FormDelete();
+  //FormTAD();
+  //FormCreate();
+  //FormUpdate();
+  //FormSelect();
+  //FormDelete();
 
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Impressao
-  PrintingModule();
+  //PrintingModule();
 
   //Exemplo (ainda sem uso de classes) de chamada do modulo de Testes (Qualidade)
-  QAModule();
+  //QAModule();
 
   return 0;
 }
