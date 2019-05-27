@@ -48,8 +48,8 @@ void Menu::addEntry(int &Option, string &OptDescription, int Position) {
 }
 
 void Menu::displayMenu(int Position) {
-  while (Posi) {
-    cout <<  << " - " << this->OptDescription << endl;
+  while (Position != Entries.size()) {
+    cout << "teste 1" << " - " << "teste 2" << endl;
 
   }
 }
