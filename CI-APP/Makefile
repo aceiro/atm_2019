@@ -22,6 +22,7 @@ OBJ = ./Obj
 SRC = ./Src
 FORM = Form
 FLAGS = -O3 -Wall -std=c++11
+CI-APP = CI-app.exe
 
 # TAG 1
 # Declaration of the "all" parameter (here are the libraries 
@@ -40,7 +41,7 @@ libform: $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Select.o $(
 
 # TAG 4
 # Generating executable (program)
-app: $(BIN)/CI-App
+app: $(BIN)/$(CI-APP)
 
 
 # Filter for compilation of Form objects
@@ -59,12 +60,12 @@ $(BIN)/%: $(APP)/%.cpp
 # TAG 5
 # Run the program
 run:
-	$(BIN)/CI-App
+	$(BIN)/$(CI-APP)
 
 # TAG 6
 # Clen the objects and executable files.
 clean:
-	rm $(BIN)/*
+	rm $(BIN)/*.exe
 	rm $(OBJ)/*.o
 	rm $(LIB)/*.a
 
