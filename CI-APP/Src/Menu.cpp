@@ -1,55 +1,69 @@
 #include <iostream>
-#include "../Include/Menu.hpp"
 #include <string>
+#include "../Include/Menu.hpp"
+
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
 
-Menu::Entry::Entry(int &Option, string &OptDescription) : Option(Option), OptDescription(OptDescription) {
+Menu::Option::Option(int idOption, string descOption) : idOption(idOption), descOption(descOption) {
+
 }
 
-Menu::Entry::~Entry() {
+Menu::Option::~Option() {
+
 }
 
-void Menu::Entry::setOption(int &Option) {
-  this->Option = Option;
+void Menu::Option::setIdOption(int idOption) {
+  this->idOption = idOption;
 }
 
-void Menu::Entry::setOptDescription(string &OptDescription) {
-  this->OptDescription = OptDescription;
+void Menu::Option::setDescOption(string descOption) {
+  this->descOption = descOption;
 }
 
-int Menu::Entry::getOption() {
-  return Option;
+int Menu::Option::getIdOption() {
+  return idOption;
 }
 
-string Menu::Entry::getOptDescription() {
-  return OptDescription;
+string Menu::Option::getDescOption() {
+  return descOption;
 }
 
 Menu::Menu() {
+
 }
 
 Menu::~Menu() {
+
 }
 
-void Menu::addEntry(int &Option, string &OptDescription) {
-  Menu::addEntry(Option, OptDescription, Entries.size());
-}
-
-void Menu::addEntry(int &Option, string &OptDescription, int Position) {
-  //for (int counter = 0; counter < Entries.size(); ++counter)
-  if ((Position < 0) || (Position > Entries.size()))
-    Entries.push_back(Entry(Option, OptDescription));
+void Menu::addOptMenu(int idOption, string descOption) {
+  // if (optMenu.empty())
+  //   optMenu.push_back(Option(idOption, descOption));
+  // else
+  //   optMenu.insert(optMenu.end(), Option(idOption, descOption));
+  
+  if (optMenu.empty())
+    optMenu.insert(optMenu.begin(), Option(idOption, descOption));
+    
   else
-    Entries.insert(Entries.begin() + Position, Entry(Option, OptDescription));
+    optMenu.push_back(Option(idOption, descOption));
+
+  // else
+  //   optMenu.insert((optMenu.begin() + size), Option(idOption, descOption));
+  
+
 }
 
-void Menu::displayMenu(int Position) {
-  while (Position != Entries.size()) {
-    cout << "teste 1" << " - " << "teste 2" << endl;
-
+void Menu::displayMenu() {  
+  cout << endl << "O tamanho do Vector é: " << optMenu.size() << endl;
+  for (unsigned i = 0; i < optMenu.size(); i++) {
+    cout << optMenu[i].getIdOption() << " - " << optMenu[i].getDescOption() << endl;
   }
-}
+  
+  // return optMenu[0].getDescOption();
+  // return 0;
+} 

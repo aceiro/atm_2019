@@ -22,7 +22,7 @@ OBJ = ./Obj
 SRC = ./Src
 FORM = Form
 FLAGS = -O3 -Wall -std=c++11
-CI-APP = CI-app.exe
+CI-APP = CI-App.exe
 
 # TAG 1
 # Declaration of the "all" parameter (here are the libraries 
@@ -31,7 +31,7 @@ all: libutils libform app
 
 # TAG 2
 # Generating library LibUtils.a (static library). This library represents project utilities.
-libutils: $(OBJ)/Menu.o $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o
+libutils: $(OBJ)/Menu.o $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o $(OBJ)/Components.o
 	ar -rcs $(LIB)/LibUtils.a $(OBJ)/*.o
 
 # TAG 3
@@ -53,11 +53,11 @@ $(OBJ)/%.o: $(SRC)/%.cpp $(INCLUDE)/%.hpp
 	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -o $@
 
 # Filter for general compilation of the executable based on the two static libraries that were created for the project.
-$(BIN)/%: $(APP)/%.cpp
+$(BIN)/%.exe: $(APP)/%.cpp
 #	If I were the need, it could be compiled by passing the objects (g++ $< $(OBJ)/*.o -I $(INCLUDE) $(FLAGS) -o $@)
 	$(CC) $< $(LIB)/LibUtils.a $(LIB)/LibForm.a -I $(INCLUDE) $(FLAGS) -o $@
 
-# TAG 5
+# TAG 5	
 # Run the program
 run:
 	$(BIN)/$(CI-APP)

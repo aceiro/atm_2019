@@ -9,28 +9,27 @@ using std::vector;
 
 class Menu {
   private:
-    class Entry {
+    class Option {
       private:
-        int Option;
-        string OptDescription;
+        int idOption;
+        string descOption;
 
       public:
-        Entry(int &Option, string &OptDescription);
-        ~Entry();
-        void setOption(int &Option);
-        void setOptDescription(string &OptDescription);
-        int getOption();
-        string getOptDescription();
+        Option(int idOption, string descOption);
+        ~Option();
+        void setIdOption(int idOption);
+        void setDescOption(string descOption);
+        int getIdOption();
+        string getDescOption();
     };
-    vector<Entry> Entries;
+    vector<Option> optMenu;
 
   public:
-    string Title;
+    string menuTitle;
     Menu();
     ~Menu();
-    void addEntry(int &Option, string &OptDescription);
-    void addEntry(int &Option, string &OptDescription, int Position);
-    void displayMenu(int Position);
+    void addOptMenu(int idOption, string descOption);
+    void displayMenu();
 };
 
 #endif

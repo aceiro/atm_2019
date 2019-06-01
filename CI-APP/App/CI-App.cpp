@@ -1,4 +1,7 @@
 #include <iostream>
+#include <locale.h>
+#include <iomanip>
+#include "../Include/Components.hpp"
 #include "../Include/Menu.hpp"
 #include "../Include/Help.hpp"
 #include "../Include/Form.hpp"
@@ -7,32 +10,34 @@
 
 using std::cout;
 using std::endl;
+using std::right;
 
 int main() {
-  cout << endl << "\tATM 2019 - CI-APP" << endl << endl;
-  cout << endl << "\tListagem de Funcoes" << endl << endl;
+  setlocale(LC_ALL,"pt_BR_utf8");
+  Components components;
+  Menu menu;
+
+  components.mainTitle = "Comunicado Interno - CI - Asser RC";
+  menu.menuTitle = "Menu Principal - Entre com uma das Opções abaixo:";
   
-  //Menu menu;
-  //int x;
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Menu
-  //menu.printMenu();
-  //cout << "Opcao escolhida " << menu.getMenu() << endl;
+  components.clearScreen();
+  cout << endl;
+  cout.width(40);
+  cout << right << components.mainTitle << endl << endl;
 
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Ajuda
-  //Help();
+  cout.width(57);
+  cout << right << menu.menuTitle << endl;
 
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Formulario de Dados
-  //FormTAD();
-  //FormCreate();
-  //FormUpdate();
-  //FormSelect();
-  //FormDelete();
-
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Impressao
-  //PrintingModule();
-
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Testes (Qualidade)
-  //QAModule();
-
+  menu.addOptMenu(1, "Cadastrar");
+  menu.addOptMenu(2, "Selecionar");
+  menu.addOptMenu(3, "Alterar");
+  menu.addOptMenu(4, "Exlcluir");
+  menu.addOptMenu(5, "00000");
+  menu.addOptMenu(5, "111111");
+  
+  menu.displayMenu();
+  components.pauseScreen();
+  components.clearScreen();
+  
   return 0;
 }
