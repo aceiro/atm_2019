@@ -5,11 +5,11 @@
 // Padrões usados para a entradas do Menu, e tudo relacionado.
 #define END "Sair do Programa"
 
-// Definição da bibliotecas utilizadas
+// Declaração das Bibliotecas internas do C++ 
 #include <string>
 #include <vector>
 
-// Refinamento do Escopo STD
+// Uso refinado do Escopo STD
 using std::string;
 using std::vector;
 

@@ -26,10 +26,10 @@ int main() {
   Menu menu;
   
   // Definição do Título principal
-  components.mainTitle = "Comunicado Interno - CI - Asser RC";
+  components.mainTitle = "CI-App beta 1.0.10";
   
   // Definição do Título do Menu
-  menu.menuTitle = "Menu Principal - Entre com uma das Opções abaixo:";
+  menu.menuTitle = "Menu - Entre com o número da Opção:";
   
   // Código de manutenção: "limpeza" de tela
   components.clearScreen();
@@ -40,7 +40,7 @@ int main() {
   cout << right << components.mainTitle << endl << endl;
 
   // Impressão (Formatada) do título do Menu na tela
-  cout.width(57);
+  cout.width(59);
   cout << right << menu.menuTitle << endl;
 
   // Entradas do Menu: são "#defines" (Constantes) presentes em ""../Includes/*"

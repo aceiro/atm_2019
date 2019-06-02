@@ -72,5 +72,5 @@ void Menu::displayMenu() {
     cout << "\t" << optMenu[i].getIdOption() << " - " << optMenu[i].getDescOption() << endl;
   }
   cout << endl;
-
 } 
+

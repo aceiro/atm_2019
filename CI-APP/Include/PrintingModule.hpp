@@ -1,3 +1,4 @@
+// Cabeçalho obrigatório na criação / declaração do arquivo das Classes
 #ifndef PRINTINGMODULE_HPP
 #define PRINTINGMODULE_HPP
 
