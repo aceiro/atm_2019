@@ -22,6 +22,7 @@ OBJ = ./Obj
 SRC = ./Src
 FORM = Form
 FLAGS = -O3 -Wall -std=c++11
+CI-APP = CI-App.exe
 
 # TAG 1
 # Declaration of the "all" parameter (here are the libraries 
@@ -30,21 +31,21 @@ all: libutils libform app
 
 # TAG 2
 # Generating library LibUtils.a (static library). This library represents project utilities.
-libutils: $(OBJ)/Menu.o $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o
+libutils: $(OBJ)/Menu.o $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o $(OBJ)/Components.o
 	ar -rcs $(LIB)/LibUtils.a $(OBJ)/*.o
 
 # TAG 3
 # Generating library LibForm.a (static library). This library represents the CRUD form used for the Project scope's.
-libform: $(OBJ)/FormCreate.o $(OBJ)/FormUpdate.o $(OBJ)/FormSelect.o $(OBJ)/FormDelete.o
+libform: $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)TAD.o
 	ar -rcs $(LIB)/LibForm.a $(OBJ)/*.o
 
 # TAG 4
 # Generating executable (program)
-app: $(BIN)/CI-App
+app: $(BIN)/$(CI-APP)
 
 
 # Filter for compilation of Form objects
-$(OBJ)/$(FORM)%.o: $(SRC)/$(FORM)%.cpp $(INCLUDE)/Form.hpp
+$(OBJ)/$(FORM)%.o: $(SRC)/$(FORM)%.cpp $(INCLUDE)/$(FORM).hpp
 	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -o $@
 
 # Filter for compilation of Utilities objects
@@ -52,19 +53,19 @@ $(OBJ)/%.o: $(SRC)/%.cpp $(INCLUDE)/%.hpp
 	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -o $@
 
 # Filter for general compilation of the executable based on the two static libraries that were created for the project.
-$(BIN)/%: $(APP)/%.cpp
+$(BIN)/%.exe: $(APP)/%.cpp
 #	If I were the need, it could be compiled by passing the objects (g++ $< $(OBJ)/*.o -I $(INCLUDE) $(FLAGS) -o $@)
 	$(CC) $< $(LIB)/LibUtils.a $(LIB)/LibForm.a -I $(INCLUDE) $(FLAGS) -o $@
 
-# TAG 5
+# TAG 5	
 # Run the program
 run:
-	$(BIN)/CI-App
+	$(BIN)/$(CI-APP)
 
 # TAG 6
 # Clen the objects and executable files.
 clean:
-	rm $(BIN)/*
+	rm $(BIN)/*.exe
 	rm $(OBJ)/*.o
-
+	rm $(LIB)/*.a
 

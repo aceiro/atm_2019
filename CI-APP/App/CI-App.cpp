@@ -1,35 +1,63 @@
+// Declaração das Bibliotecas internas do C++ 
 #include <iostream>
-#include "../Include/Menu.hpp"
-#include "../Include/Help.hpp"
-#include "../Include/Form.hpp"
-#include "../Include/PrintingModule.hpp"
-#include "../Include/QAModule.hpp"
+#include <locale.h>
+#include <iomanip>
 
+// Declaração das Bibliotecas internas do Projeto (declação das Classes)
+#include "../Include/Components.hpp" // Classe Funções (Métodos) auxiliares (Pause, Limpa tela, etc...)
+#include "../Include/Menu.hpp" // Classe Funções (Métodos) do Menu 
+#include "../Include/Help.hpp" // Classe Funções (Métodos) Ajuda/Sobre o sistema
+#include "../Include/Form.hpp" // Classe Funções (Métodos) Manipulação do CRUD
+#include "../Include/PrintingModule.hpp" // Classe Funções (Métodos) Impressão
+#include "../Include/QAModule.hpp" // Classe Funções (Métodos) Testes
+
+// Uso refinado do Escopo STD
 using std::cout;
 using std::endl;
+using std::right;
 
+// Estrutura do Código Main
 int main() {
-  cout << endl << "\tATM 2019 - CI-APP" << endl << endl;
-  cout << endl << "\tListagem de Funcoes" << endl << endl;
+  // Configurando para o código aceitar acentuação PT_BR
+  setlocale(LC_ALL,"pt_BR_utf8");
 
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Menu
-  Menu();
+  // Declaração/Instanciação das Classes, gerando os Objetos
+  Components components;
+  Menu menu;
+  
+  // Definição do Título principal
+  components.mainTitle = "Comunicado Interno - CI - Asser RC";
+  
+  // Definição do Título do Menu
+  menu.menuTitle = "Menu Principal - Entre com uma das Opções abaixo:";
+  
+  // Código de manutenção: "limpeza" de tela
+  components.clearScreen();
+  
+  // Impressão (Formatada) do título do programa na tela
+  cout << endl;
+  cout.width(40);
+  cout << right << components.mainTitle << endl << endl;
 
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Ajuda
-  Help();
+  // Impressão (Formatada) do título do Menu na tela
+  cout.width(57);
+  cout << right << menu.menuTitle << endl;
 
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Formulario de Dados
-  FormTAD();
-  FormCreate();
-  FormUpdate();
-  FormSelect();
-  FormDelete();
-
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Impressao
-  PrintingModule();
-
-  //Exemplo (ainda sem uso de classes) de chamada do modulo de Testes (Qualidade)
-  QAModule();
-
+  // Entradas do Menu: são "#defines" (Constantes) presentes em ""../Includes/*"
+  menu.addOptMenu(1, CREATE);
+  menu.addOptMenu(2, SELECT);
+  menu.addOptMenu(3, UPDATE);
+  menu.addOptMenu(4, DELETE);
+  menu.addOptMenu(5, HELP);
+  menu.addOptMenu(6, PRINT);
+  menu.addOptMenu(7, END);
+  
+  // Impressão da Opções do Menu
+  menu.displayMenu();
+  
+  // Código de manutenção: "Pause" e limpeza de tela
+  components.pauseScreen();
+  components.clearScreen();
+  
   return 0;
 }
