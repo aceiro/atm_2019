@@ -36,6 +36,7 @@ class Menu {
     // Definição de optMenu como um "vector" do Tipo "Option"
     // Faz referência a nossa Classe Option, com os nossos modelos
     vector<Option> optMenu;
+    int choiceMenu;
 
   public:
     // Atributo para definir Título do Menu 
@@ -46,6 +47,9 @@ class Menu {
     // Métodos de manipulação da Classe
     void addOptMenu(int idOption, string descOption);
     void displayMenu();
+    void setChoiceMenu();
+    int getChoiceMenu();
+    string getChoiceStringMenu();
 };
 
 #endif

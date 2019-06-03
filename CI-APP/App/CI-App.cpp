@@ -15,6 +15,7 @@
 using std::cout;
 using std::endl;
 using std::right;
+using std::string;
 
 // Estrutura do Código Main
 int main() {
@@ -24,6 +25,10 @@ int main() {
   // Declaração/Instanciação das Classes, gerando os Objetos
   Components components;
   Menu menu;
+
+  // Declaração de váriaveis de apoio
+  int recChoiceMenu;
+  string recChoiceStringMenu;
   
   // Definição do Título principal
   components.mainTitle = "CI-App beta 1.0.10";
@@ -54,6 +59,17 @@ int main() {
   
   // Impressão da Opções do Menu
   menu.displayMenu();
+
+  // Escolha do Menu (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
+  menu.setChoiceMenu();
+  
+  // Imprimindo a Opção (número) (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
+  recChoiceMenu = menu.getChoiceMenu();
+  cout << endl << "Escolha do Menu: " << recChoiceMenu;
+
+  // Imprimindo a Opção (descrição) (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
+  recChoiceStringMenu = menu.getChoiceStringMenu();
+  cout << " - " << recChoiceStringMenu << endl;
   
   // Código de manutenção: "Pause" e limpeza de tela
   components.pauseScreen();
