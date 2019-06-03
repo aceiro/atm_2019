@@ -17,52 +17,66 @@ CC = g++
 APP = ./App
 BIN = ./Bin
 INCLUDE = ./Include
+INCLUDE_EXTERNLIB = ./Include/ExternLib/MenuTemplate
+INCLUDE_EXTERNFUNCTIONS = ./Include/ExternLib/MenuTemplate/ExternFunctions
 LIB = ./Lib
 OBJ = ./Obj
 SRC = ./Src
 FORM = Form
-FLAGS = -O3 -Wall -std=c++11
+FLAGS = -std=c++11
+# FLAGS = -O3 -Wall -std=c++11
 CI-APP = CI-App.exe
+
 
 # TAG 1
 # Declaração do parâmetro "all" (aqui estão as bibliotecas 
 # e aplicações a serem definidas como saída da compilação)
-all: libutils libform app
+all: libutils libform libextern app
+
 
 # TAG 2
 # Gerando Biblioteca LibUtils.a (bibioteca estática). Esta biblioteca representa utilitários do projeto.
-libutils: $(OBJ)/Menu.o $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o $(OBJ)/Components.o
-	ar -rcs $(LIB)/LibUtils.a $(OBJ)/*.o
+libutils:
+	$(CC) -c $(SRC)/Help.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/Help.o
+	$(CC) -c $(SRC)/PrintingModule.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/PrintingModule.o
+	$(CC) -c $(SRC)/QAModule.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/QAModule.o
+	$(CC) -c $(SRC)/Components.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/Components.o
+	ar -rcs $(LIB)/LibUtils.a $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o $(OBJ)/Components.o
+
 
 # TAG 3
 # Gerando Biblioteca LibForm.a (bibioteca estática). Esta biblioteca representa o formulário CRUD (Form) em nosso projeto.
-libform: $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)TAD.o
-	ar -rcs $(LIB)/LibForm.a $(OBJ)/*.o
+libform:
+	$(CC) -c $(SRC)/$(FORM)Create.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Create.o
+	$(CC) -c $(SRC)/$(FORM)Select.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Select.o
+	$(CC) -c $(SRC)/$(FORM)Update.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Update.o
+	$(CC) -c $(SRC)/$(FORM)Delete.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Delete.o
+	$(CC) -c $(SRC)/$(FORM)Data.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Data.o
+	ar -rcs $(LIB)/LibForm.a $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)Data.o
+
 
 # TAG 4
+# Gerando Biblioteca LibExtern.a (bibioteca estática). Esta biblioteca representa o Menu (MenuTemplate externo) em nosso projeto.
+libextern:
+	$(CC) -c $(INCLUDE_EXTERNLIB)/MenuTemplate.cpp -I $(INCLUDE_EXTERNLIB) $(FLAGS) -o $(OBJ)/MenuTemplate.o
+	$(CC) -c $(INCLUDE_EXTERNLIB)/Entry.cpp -I $(INCLUDE_EXTERNLIB) $(FLAGS) -o $(OBJ)/Entry.o
+	$(CC) -c $(INCLUDE_EXTERNFUNCTIONS)/getChar.cpp -I $(INCLUDE_EXTERNFUNCTIONS) $(FLAGS) -o $(OBJ)/getChar.o
+	ar -rcs $(LIB)/LibExtern.a $(OBJ)/MenuTemplate.o $(OBJ)/Entry.o $(OBJ)/getChar.o
+
+
+# TAG 5
 # Gerando executável (programa)
-app: $(BIN)/$(CI-APP)
+app:
+	$(CC) $(APP)/CI-App.cpp $(LIB)/*.a -I $(INCLUDE) $(FLAGS) -o $(BIN)/$(CI-APP)
 
 
-# Filtro para compilação dos Forms (gerando objetos)
-$(OBJ)/$(FORM)%.o: $(SRC)/$(FORM)%.cpp $(INCLUDE)/$(FORM).hpp
-	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -o $@
-
-# Filtro para compilação dos Utilitários (gerando objetos)
-$(OBJ)/%.o: $(SRC)/%.cpp $(INCLUDE)/%.hpp
-	$(CC) -c $< -I $(INCLUDE) $(FLAGS) -o $@
-
-# Filtro para compilação geral do executável com base nas duas bibliotecas estáticas que foram criadas para o projeto.
-$(BIN)/%.exe: $(APP)/%.cpp
-#	Caso haja a necessidade, poderia ser compilado passando os objetos (g++ $< $(OBJ)/*.o -I $(INCLUDE) $(FLAGS) -o $@)
-	$(CC) $< $(LIB)/LibUtils.a $(LIB)/LibForm.a -I $(INCLUDE) $(FLAGS) -o $@
-
-# TAG 5	
+# TAG 6	
 # Executa o programa (executável em ./CI-App/Bin/)
 run:
 	$(BIN)/$(CI-APP)
 
-# TAG 6
+
+# TAG 7
 # Limpa os arquivos objetos, bibliotecas e executáveis para um compilação "full".
 clean:
 	rm $(OBJ)/*.o

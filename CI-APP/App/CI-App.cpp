@@ -1,11 +1,11 @@
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
 #include <locale.h>
-#include <iomanip>
+//#include <iomanip>
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)
 #include "../Include/Components.hpp" // Classe Funções (Métodos) auxiliares (Pause, Limpa tela, etc...)
-#include "../Include/Menu.hpp" // Classe Funções (Métodos) do Menu 
+#include "../Include/ExternLib/MenuTemplate/MenuTemplate.hpp"// Classe Funções (Métodos) do MenuTemplate (Externo) 
 #include "../Include/Help.hpp" // Classe Funções (Métodos) Ajuda/Sobre o sistema
 #include "../Include/Form.hpp" // Classe Funções (Métodos) Manipulação do CRUD
 #include "../Include/PrintingModule.hpp" // Classe Funções (Métodos) Impressão
@@ -24,56 +24,29 @@ int main() {
 
   // Declaração/Instanciação das Classes, gerando os Objetos
   Components components;
-  Menu menu;
+  MenuTemplate::MenuTemplate menu;
+  
+  // Rotina de título do Menutemplate (Ferramenta externa)
+  menu.Title = "\t\tCI-App beta 1.1.40";
+  menu.Description = "Mova setas (p/ Acima ou p/ Abaixo) para escolher uma opção: ";
+  menu.setCursor("> ");
 
-  // Declaração de váriaveis de apoio
-  int recChoiceMenu;
-  string recChoiceStringMenu;
-  
-  // Definição do Título principal
-  components.mainTitle = "CI-App beta 1.0.10";
-  
-  // Definição do Título do Menu
-  menu.menuTitle = "Menu - Entre com o número da Opção:";
-  
-  // Código de manutenção: "limpeza" de tela
-  components.clearScreen();
-  
-  // Impressão (Formatada) do título do programa na tela
-  cout << endl;
-  cout.width(40);
-  cout << right << components.mainTitle << endl << endl;
+  // Rotina de instanciar entradas de Menu: a primeira String será usada para comparação do CRUD
+  menu.addEntry("CREATE", "Criar um novo registro de CI");
+  menu.addEntry("SELECT", "Listar/Localizar um registro de CI");
+  menu.addEntry("UPDATE", "Atualizar um registro de CI");
+  menu.addEntry("DELETE", "Apagar um registro de CI");
+  menu.addEntry("PRINT", "Imprimir um registro de CI");
+  menu.addEntry("HELP", "Ajuda / Sobre");
+  menu.addEntry("END", "Finalizar o Programa");
 
-  // Impressão (Formatada) do título do Menu na tela
-  cout.width(59);
-  cout << right << menu.menuTitle << endl;
+  // Definindo posição e local de início do Cursor
+  menu.swapEntries(2, "CREATE");
+  menu.setCursorStartPosition(0);
 
-  // Entradas do Menu: são "#defines" (Constantes) presentes em ""../Includes/*"
-  menu.addOptMenu(1, CREATE);
-  menu.addOptMenu(2, SELECT);
-  menu.addOptMenu(3, UPDATE);
-  menu.addOptMenu(4, DELETE);
-  menu.addOptMenu(5, HELP);
-  menu.addOptMenu(6, PRINT);
-  menu.addOptMenu(7, END);
-  
-  // Impressão da Opções do Menu
-  menu.displayMenu();
-
-  // Escolha do Menu (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
-  menu.setChoiceMenu();
-  
-  // Imprimindo a Opção (número) (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
-  recChoiceMenu = menu.getChoiceMenu();
-  cout << endl << "Escolha do Menu: " << recChoiceMenu;
-
-  // Imprimindo a Opção (descrição) (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
-  recChoiceStringMenu = menu.getChoiceStringMenu();
-  cout << " - " << recChoiceStringMenu << endl;
-  
-  // Código de manutenção: "Pause" e limpeza de tela
-  components.pauseScreen();
-  components.clearScreen();
-  
+  // Aqui ainda estamos apenas retornado o que vai ser comparado para o CRUD.
+  // Posteriormente usaremos o método set para enviar para o CRUD.
+  cout << menu.displayGetName() << endl;
+ 
   return 0;
 }
