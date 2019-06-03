@@ -8,7 +8,7 @@
 #define UPDATE "Atualizar um registro de CI"
 #define DELETE "Apagar um registro de CI"
 
-void FormTAD();
+void FormData();
 void FormCreate();
 void FormUpdate();
 void FormSelect();
