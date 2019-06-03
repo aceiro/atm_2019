@@ -1,3 +1,4 @@
+// Cabeçalho obrigatório na criação / declaração do arquivo das Classes
 #ifndef FORM_HPP
 #define FORM_HPP
 

@@ -1,3 +1,4 @@
+// Cabeçalho obrigatório na criação / declaração do arquivo das Classes
 #ifndef HELP_HPP 
 #define HELP_HPP
 

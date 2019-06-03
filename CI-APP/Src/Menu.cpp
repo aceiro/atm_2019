@@ -68,9 +68,59 @@ void Menu::addOptMenu(int idOption, string descOption) {
 void Menu::displayMenu() {  
   
   // Usando laço para correr todas as posições da estrutrua Vector, para imprimir as opções do Menu 
-  for (unsigned i = 0; i < optMenu.size(); i++) {
+  for (unsigned i = 0; i < optMenu.size(); i++)
     cout << "\t" << optMenu[i].getIdOption() << " - " << optMenu[i].getDescOption() << endl;
-  }
+  
   cout << endl;
-
 } 
+
+// Desenvolvimento do método setOptMenu: estrutura de escolha da opção do Menu (ainda não completa)
+void Menu::setChoiceMenu() {
+  // while (!choiceMenu) {
+    cout << "\t Qual é sua escolha: ";
+    cin >> choiceMenu;
+    switch (choiceMenu) {
+    case 1:
+      this->choiceMenu = choiceMenu;
+      break;
+    case 2:
+      this->choiceMenu = choiceMenu;
+      break;
+    case 3:
+      this->choiceMenu = choiceMenu;
+      break;
+    case 4:
+      this->choiceMenu = choiceMenu;
+      break;
+    case 5:
+      this->choiceMenu = choiceMenu;
+      break;
+    case 6:
+      this->choiceMenu = choiceMenu;
+      break;
+    case 7:
+      this->choiceMenu = choiceMenu;
+      break;
+    default:
+      cout << endl << choiceMenu << "Não faz parte do escopo" << endl;
+      this->choiceMenu = choiceMenu;
+      break;
+    }
+  // }
+  
+}
+
+// Desenvolvimento do método getOptMenu: retorna escolha do usuário (ainda retorna para main *)
+int Menu::getChoiceMenu() {
+  return this->choiceMenu;
+}
+
+// Desenvolvimento do método getOptStringMenu: retorna escolha (string) do usuário (ainda retorna para main *)
+string Menu::getChoiceStringMenu() {
+  for (unsigned i = 0; i < optMenu.size(); i++) {
+    if (this->choiceMenu == optMenu[i].getIdOption())
+      return optMenu[i].getDescOption();
+  }
+  
+  return "Não existe";
+}

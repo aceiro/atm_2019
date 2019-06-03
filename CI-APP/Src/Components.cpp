@@ -21,4 +21,5 @@ void Components::clearScreen() {
 
 void Components::pauseScreen() {
   getchar();
+  getchar();
 }

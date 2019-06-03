@@ -15,6 +15,7 @@
 using std::cout;
 using std::endl;
 using std::right;
+using std::string;
 
 // Estrutura do Código Main
 int main() {
@@ -24,12 +25,16 @@ int main() {
   // Declaração/Instanciação das Classes, gerando os Objetos
   Components components;
   Menu menu;
+
+  // Declaração de váriaveis de apoio
+  int recChoiceMenu;
+  string recChoiceStringMenu;
   
   // Definição do Título principal
-  components.mainTitle = "Comunicado Interno - CI - Asser RC";
+  components.mainTitle = "CI-App beta 1.0.10";
   
   // Definição do Título do Menu
-  menu.menuTitle = "Menu Principal - Entre com uma das Opções abaixo:";
+  menu.menuTitle = "Menu - Entre com o número da Opção:";
   
   // Código de manutenção: "limpeza" de tela
   components.clearScreen();
@@ -40,7 +45,7 @@ int main() {
   cout << right << components.mainTitle << endl << endl;
 
   // Impressão (Formatada) do título do Menu na tela
-  cout.width(57);
+  cout.width(59);
   cout << right << menu.menuTitle << endl;
 
   // Entradas do Menu: são "#defines" (Constantes) presentes em ""../Includes/*"
@@ -54,6 +59,17 @@ int main() {
   
   // Impressão da Opções do Menu
   menu.displayMenu();
+
+  // Escolha do Menu (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
+  menu.setChoiceMenu();
+  
+  // Imprimindo a Opção (número) (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
+  recChoiceMenu = menu.getChoiceMenu();
+  cout << endl << "Escolha do Menu: " << recChoiceMenu;
+
+  // Imprimindo a Opção (descrição) (ainda retornando para o Main -> no futuro só retorna quando finaliza o programa)
+  recChoiceStringMenu = menu.getChoiceStringMenu();
+  cout << " - " << recChoiceStringMenu << endl;
   
   // Código de manutenção: "Pause" e limpeza de tela
   components.pauseScreen();

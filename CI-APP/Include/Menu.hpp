@@ -5,11 +5,11 @@
 // Padrões usados para a entradas do Menu, e tudo relacionado.
 #define END "Sair do Programa"
 
-// Definição da bibliotecas utilizadas
+// Declaração das Bibliotecas internas do C++ 
 #include <string>
 #include <vector>
 
-// Refinamento do Escopo STD
+// Uso refinado do Escopo STD
 using std::string;
 using std::vector;
 
@@ -36,6 +36,7 @@ class Menu {
     // Definição de optMenu como um "vector" do Tipo "Option"
     // Faz referência a nossa Classe Option, com os nossos modelos
     vector<Option> optMenu;
+    int choiceMenu;
 
   public:
     // Atributo para definir Título do Menu 
@@ -46,6 +47,9 @@ class Menu {
     // Métodos de manipulação da Classe
     void addOptMenu(int idOption, string descOption);
     void displayMenu();
+    void setChoiceMenu();
+    int getChoiceMenu();
+    string getChoiceStringMenu();
 };
 
 #endif
