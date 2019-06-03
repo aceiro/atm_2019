@@ -65,7 +65,7 @@ run:
 # TAG 6
 # Limpa os arquivos objetos, bibliotecas e executáveis para um compilação "full".
 clean:
-	rm $(BIN)/*.exe
 	rm $(OBJ)/*.o
 	rm $(LIB)/*.a
+	rm $(BIN)/*.exe
 
