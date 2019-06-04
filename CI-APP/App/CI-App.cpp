@@ -11,6 +11,9 @@
 #include "../Include/PrintingModule.hpp" // Classe Funções (Métodos) Impressão
 #include "../Include/QAModule.hpp" // Classe Funções (Métodos) Testes
 
+// Padrões usados para a entradas do Menu, e tudo relacionado.
+#define END "Finalizar o Programa"
+
 // Uso refinado do Escopo STD
 using std::cout;
 using std::endl;
@@ -24,21 +27,22 @@ int main() {
 
   // Declaração/Instanciação das Classes, gerando os Objetos
   Components components;
+  Help help;
   MenuTemplate::MenuTemplate menu;
   
   // Rotina de título do Menutemplate (Ferramenta externa)
-  menu.Title = "\t\tCI-App beta 1.1.40";
+  menu.Title = "\t\tCI-App beta 1.1.50";
   menu.Description = "Mova setas (p/ Acima ou p/ Abaixo) para escolher uma opção: ";
-  menu.setCursor("> ");
+  menu.setCursor(" -> ");
 
   // Rotina de instanciar entradas de Menu: a primeira String será usada para comparação do CRUD
-  menu.addEntry("CREATE", "Criar um novo registro de CI");
-  menu.addEntry("SELECT", "Listar/Localizar um registro de CI");
-  menu.addEntry("UPDATE", "Atualizar um registro de CI");
-  menu.addEntry("DELETE", "Apagar um registro de CI");
-  menu.addEntry("PRINT", "Imprimir um registro de CI");
-  menu.addEntry("HELP", "Ajuda / Sobre");
-  menu.addEntry("END", "Finalizar o Programa");
+  menu.addEntry("CREATE", CREATE);
+  menu.addEntry("SELECT", SELECT);
+  menu.addEntry("UPDATE", UPDATE);
+  menu.addEntry("DELETE", DELETE);
+  menu.addEntry("PRINT", PRINT);
+  menu.addEntry("HELP", HELP);
+  menu.addEntry("END", END);
 
   // Definindo posição e local de início do Cursor
   menu.swapEntries(2, "CREATE");
@@ -46,7 +50,11 @@ int main() {
 
   // Aqui ainda estamos apenas retornado o que vai ser comparado para o CRUD.
   // Posteriormente usaremos o método set para enviar para o CRUD.
-  cout << menu.displayGetName() << endl;
- 
+  if (menu.displayGetName() == "HELP")
+    help.displayHelpFile();
+  
+  // else
+    // cout << menu.displayGetName() << endl;
+  
   return 0;
 }

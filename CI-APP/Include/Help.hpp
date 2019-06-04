@@ -4,6 +4,7 @@
 
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
+#include <string>
 #include <fstream>
 
 // Padrões usados para a entradas do Menu, e tudo relacionado.
@@ -12,6 +13,7 @@
 // Uso refinado do Escopo STD
 using std::cout;
 using std::endl;
+using std::string;
 // Container para utilizar abertura e leitura de arquivos em C++
 using std::ifstream;
 
@@ -21,6 +23,8 @@ class Help {
   private:
     // Atributo responsável pela abertura do arquivo.
     ifstream helpFile;
+    string fileLine;
+    int lineNumber;
   
   public:
     Help();
