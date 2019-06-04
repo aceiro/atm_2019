@@ -5,7 +5,6 @@
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)
 #include "../Include/Help.hpp"
-#include "../Include/Components.hpp"
 
 // Uso refinado do Escopo STD
 using std::cout;
