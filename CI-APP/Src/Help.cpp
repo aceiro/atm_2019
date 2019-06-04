@@ -1,9 +1,22 @@
+// Declaração das Bibliotecas internas do C++ 
 #include <iostream>
+
+// Declaração das Bibliotecas internas do Projeto (declação das Classes)
 #include "../Include/Help.hpp"
 
+// Uso refinado do Escopo STD
 using std::cout;
 using std::endl;
+using std::ifstream;
 
-void Help() {
-  cout << endl << "Aqui estamos no modulo de Ajuda... Ainda em construcao" << endl;
+Help::Help() {
+
+}
+
+Help::~Help() {
+
+}
+
+void Help::displayHelpFile() {
+  
 }
