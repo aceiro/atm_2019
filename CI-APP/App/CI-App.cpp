@@ -1,5 +1,6 @@
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
+#include <string>
 #include <locale.h>
 //#include <iomanip>
 
@@ -29,6 +30,9 @@ int main() {
   Components components;
   Help help;
   MenuTemplate::MenuTemplate menu;
+
+  // Declaração das váriaveis locais
+  string option;
   
   // Rotina de título do Menutemplate (Ferramenta externa)
   menu.Title = "\t\tCI-App beta 1.1.50";
@@ -48,10 +52,43 @@ int main() {
   menu.swapEntries(2, "CREATE");
   menu.setCursorStartPosition(0);
 
-  // Aqui ainda estamos apenas retornado o que vai ser comparado para o CRUD.
-  // Posteriormente usaremos o método set para enviar para o CRUD.
-  if (menu.displayGetName() == "HELP")
-    help.displayHelpFile();
+  // Mainloop do programa usando um do...while
+  do {
+    // Variavel que armazena o valor retornando (string) da opção do menu
+    option = menu.displayGetName();
+    
+    // Usando apenas uma estrutura if, pois switch não trabalha com comparações de strings
+    if (option == "HELP") {
+      help.displayHelpFile();
+      components.pauseScreen();
+    }
+    
+    if (option == "PRINT") {
+      cout << PRINT << endl;
+      components.pauseScreen();
+    }
+
+    if (option == "DELETE") {
+      cout << DELETE << endl;
+      components.pauseScreen();
+    }
+
+    if (option == "UPDATE") {
+      cout << UPDATE << endl;
+      components.pauseScreen();
+    }
+
+    if (option == "SELECT") {
+      cout << SELECT << endl;
+      components.pauseScreen();
+    }
+    
+    if (option == "CREATE") {
+      cout << CREATE << endl;
+      components.pauseScreen();
+    }
+
+  } while (option != "END");
   
   // else
     // cout << menu.displayGetName() << endl;
