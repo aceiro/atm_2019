@@ -9,7 +9,7 @@
 #include <ctime>
 
 // Tamanho padrão para armazenar a string que obtivermos do horário.
-#define DATE_SIZE 100
+// #define DATE_SIZE 100
 // Padrões usados para a entradas do Menu, e tudo relacionado.
 #define CREATE "Criar um novo registro de CI"
 #define SELECT "Listar/Localizar um registro de CI"
@@ -30,12 +30,12 @@ class Form {
         string senderCI;
         string recipientCI;
         string subjectCI;
-        char dateCI[DATE_SIZE];
+        const char *dateCI;
         string messageCI;
       
       public:
         // Construtor/Destrutor da Classe FormData
-        FormData(int idCI, string senderCI, string recipientCI, string subjectCI, char dateCI[], string messageCI);
+        FormData(int idCI, string senderCI, string recipientCI, string subjectCI, const char &dateCI, string messageCI);
         ~FormData();
         // Métodos da Classe FormData
         void setIdCI();
@@ -48,7 +48,7 @@ class Form {
         string getSenderCI();
         string getRecipientCI();
         string getSubjectCI();
-        char getDateCI();
+        const char *getDateCI();
         string getMessageCI();
     };
     // Tornando nossa base de dados uma estrutrua de dados do tipo Vector 
