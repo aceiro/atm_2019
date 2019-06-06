@@ -1,7 +1,7 @@
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
 #include <string>
-#include <locale.h>
+#include <locale.h> // Biblioteca interna do C++ para usar padrões de linguagem de acordo com o idioma
 //#include <iomanip>
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)

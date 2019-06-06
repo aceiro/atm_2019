@@ -11,7 +11,7 @@ using std::endl;
 using std::string;
 
 // Inicialização do Construtor, repassando a herança para os atributos que estarão encapsulados
-Form::FormData::FormData(int idCI, string senderCI, string recipientCI, string subjectCI, const char &dateCI, string messageCI) : idCI(idCI), senderCI(senderCI), recipientCI(recipientCI), subjectCI(subjectCI), dateCI(&dateCI), messageCI(messageCI) {
+Form::FormData::FormData(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) : idCI(idCI), senderCI(senderCI), recipientCI(recipientCI), subjectCI(subjectCI), dateCI(dateCI), messageCI(messageCI) {
 
 }
   
@@ -59,7 +59,7 @@ string Form::FormData::getSubjectCI() {
   return subjectCI;
 }
   
-const char *Form::FormData::getDateCI() {
+string Form::FormData::getDateCI() {
   return dateCI;
 }
   
