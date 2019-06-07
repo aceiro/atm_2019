@@ -41,7 +41,6 @@ const char *Form::getSystemDate() {
 
 // Validação de entrada de dados no formulário
 string Form::validateInput(string inputData) {
-  
   // Condicional recursiva que força usuário a entrar com um valor válido (que seja um nome ou algo parecido)
   if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3]))) {
     cout << endl << inputData << " não é um remetente válido (nome)! " << "Digite novamente: ";
@@ -76,14 +75,18 @@ void Form::formCreate() {
   dateCI = getSystemDate();
 
   // cin.ignore();
-  // if 
 
+  // Criar rotina de utilizar do crudCreate
+}
+
+void Form::crudCreate(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) {
   // Verificação da Posição a ser inserido, e inserção
+  // Insere no início, quando a estrutura de dados está vazia
   if (Data.empty())
     Data.insert(Data.begin(), FormData(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI));
 
+  // Insere no final, quando já existir algum registro na estrtutura de dados
   else
     Data.push_back(FormData(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI));
-  
 
 }
