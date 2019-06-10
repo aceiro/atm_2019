@@ -30,6 +30,7 @@ int main() {
   Components components;
   Help help;
   MenuTemplate::MenuTemplate menu;
+  Form form;
 
   // Declaração das váriaveis locais
   string option;
@@ -84,7 +85,8 @@ int main() {
     }
     
     if (option == "CREATE") {
-      cout << CREATE << endl;
+      //cout << CREATE << endl;
+      form.formCreate();
       components.pauseScreen();
     }
 

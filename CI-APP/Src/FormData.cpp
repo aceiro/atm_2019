@@ -10,6 +10,14 @@ using std::cout;
 using std::endl;
 using std::string;
 
+Form::Form() {
+
+}
+
+Form::~Form() {
+
+}
+
 // Inicialização do Construtor, repassando a herança para os atributos que estarão encapsulados
 Form::FormData::FormData(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) : idCI(idCI), senderCI(senderCI), recipientCI(recipientCI), subjectCI(subjectCI), dateCI(dateCI), messageCI(messageCI) {
 

@@ -64,9 +64,9 @@ class Form {
     
     // Métodos de entrada/inserção de dados para serem gravados ou não
     void formCreate();
-    void formCreate();
     void formSelect();
     void formUpdate();
+    void formDelete();
 
     // Métodos da Classe Form (Basicamente farão as operações do CRUD)
     void crudCreate(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
@@ -75,7 +75,8 @@ class Form {
     void crudDelete(int idCI);
 
     // Método de validação ou conversão de dados
-    const char *getSystemDate();
+    // const char *getSystemDate();
+    string getSystemDate();
     string validateInput(string inputData, int optCheckIn);
 };
   
