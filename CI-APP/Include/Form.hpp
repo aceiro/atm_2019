@@ -8,8 +8,11 @@
 #include <vector>
 #include <ctime>
 
-// Tamanho padrão para armazenar a string que obtivermos do horário.
+// Tamanho padrão para armazenar os tamanhos das strings.
 #define DATE_SIZE 100
+#define SENDER_RECIPIENT_SUBJECT_SIZE 100 
+#define MENSSAGE_SIZE 500 
+
 // Padrões usados para a entradas do Menu, e tudo relacionado.
 #define CREATE "Criar um novo registro de CI"
 #define SELECT "Listar/Localizar um registro de CI"
@@ -73,7 +76,7 @@ class Form {
 
     // Método de validação ou conversão de dados
     const char *getSystemDate();
-    string validateInput(string inputData);
+    string validateInput(string inputData, int optCheckIn);
 };
   
 #endif

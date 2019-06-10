@@ -40,27 +40,69 @@ const char *Form::getSystemDate() {
 }
 
 // Validação de entrada de dados no formulário
-string Form::validateInput(string inputData) {
-  // Condicional recursiva que força usuário a entrar com um valor válido (que seja um nome ou algo parecido)
-  if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3]))) {
-    cout << endl << inputData << " não é um remetente válido (nome)! " << "Digite novamente: ";
-    getline(cin, inputData);
-    cin.ignore();
-    validateInput(inputData);
-  }
-  
-  else
+string Form::validateInput(string inputData, int optCheckIn) {
+  // Aqui, primeiramente verifica qual campo está entrando e depois, valida o mesmo
+  if (optCheckIn == 10) {
+    inputData.length() == SENDER_RECIPIENT_SUBJECT_SIZE;
+
+    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (!inputData.length())) {
+      cout << endl << inputData << " não é um [remetente] válido! " << "Digite novamente: ";
+      getline(cin, inputData);
+      cin.ignore();
+      validateInput(inputData, 10);
+    }
+    else
       return inputData;
+  } 
+  
+  if (optCheckIn == 20) {
+    inputData.length() == SENDER_RECIPIENT_SUBJECT_SIZE;
+    
+    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (!inputData.length())) {
+      cout << endl << inputData << " não é um [destinatário] válido! " << "Digite novamente: ";
+      getline(cin, inputData);
+      cin.ignore();
+      validateInput(inputData, 20);
+    }
+    else
+      return inputData;
+  } 
+
+  if (optCheckIn == 30) {
+    inputData.length() == SENDER_RECIPIENT_SUBJECT_SIZE;
+    
+    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (!inputData.length())) {
+      cout << endl << inputData << " não é um [assunto] válido! " << "Digite novamente: ";
+      getline(cin, inputData);
+      cin.ignore();
+      validateInput(inputData, 30);
+    }
+    else
+      return inputData;
+  } 
+
+  if (optCheckIn == 40) {
+    inputData.length() == MENSSAGE_SIZE;
+    
+    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (!inputData.length())) {
+      cout << endl << inputData << " não é uma [mensagem] válida! " << "Digite novamente: ";
+      getline(cin, inputData);
+      cin.ignore();
+      validateInput(inputData, 40);
+    }
+    else
+      return inputData;
+  } 
 }
 
 void Form::formCreate() {
   // Váriaveis para inserção no Formulário
   int idCI;
-  string senderCI;
-  string recipientCI;
-  string subjectCI;
-  string dateCI;
-  string messageCI;
+  string senderCI; // optCheckIn == 10;
+  string recipientCI; // optCheckIn == 20;
+  string subjectCI; // optCheckIn == 30;
+  string dateCI; 
+  string messageCI; // optCheckIn == 40;
 
   // Entrada de dados
   cout << endl << "\tMódulo de Cadastro - Inserir uma CI" << endl;
