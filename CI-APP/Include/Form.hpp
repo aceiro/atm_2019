@@ -80,4 +80,4 @@ class Form {
     string validateInput(string inputData, int optCheckIn);
 };
   
-#endif
+#endif  

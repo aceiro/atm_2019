@@ -23,9 +23,8 @@ string Form::getSystemDate() {
   // "tm" é um estrutura interna do C++ que indica atributos do tipo TIME
   struct tm *timeInfo;
 
-  // "buffer" será nosso retorno com data formatada
+  // "buffer" será atribuída a "sBuffer", e será nosso retorno com data formatada
   char buffer[DATE_SIZE];
-
   string sBuffer;
 
   // Usando a função "time" (Interna do C++) passando como referência "t_Date"
@@ -39,7 +38,6 @@ string Form::getSystemDate() {
   strftime(buffer, DATE_SIZE, "%d/%m%/Y", timeInfo);
 
   // retornamos nossa string, para que seja usada no restante do programa
-  // return buffer;
   sBuffer = buffer;
   return sBuffer;
 }
@@ -47,45 +45,23 @@ string Form::getSystemDate() {
 // Validação de entrada de dados no formulário
 string Form::validateInput(string inputData, int optCheckIn) {
   // Aqui, primeiramente verifica qual campo está entrando e depois, valida o mesmo
-  if (optCheckIn == 10) {
+  if (optCheckIn == SENDER_RECIPIENT_SUBJECT_SIZE) {
     if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (inputData.length() > SENDER_RECIPIENT_SUBJECT_SIZE)) {
-      cout << endl << inputData << " não é um [remetente] válido! " << "Digite novamente: ";
+      cout << endl << "\tEntre com dados válidos! Digite novamente: ";
       getline(cin, inputData);
       // cin.ignore();
-      validateInput(inputData, 10);
+      validateInput(inputData, SENDER_RECIPIENT_SUBJECT_SIZE);
     }
     else
       return inputData;
   } 
   
-  if (optCheckIn == 20) {  
-    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (inputData.length() > SENDER_RECIPIENT_SUBJECT_SIZE)) {
-      cout << endl << inputData << " não é um [destinatário] válido! " << "Digite novamente: ";
-      getline(cin, inputData);
-      // cin.ignore();
-      validateInput(inputData, 20);
-    }
-    else
-      return inputData;
-  } 
-
-  if (optCheckIn == 30) {
-    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (inputData.length() > SENDER_RECIPIENT_SUBJECT_SIZE)) {
-      cout << endl << inputData << " não é um [assunto] válido! " << "Digite novamente: ";
-      getline(cin, inputData);
-      // cin.ignore();
-      validateInput(inputData, 30);
-    }
-    else
-      return inputData;
-  } 
-
-  if (optCheckIn == 40) {
+  if (optCheckIn == MENSSAGE_SIZE) {
     if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (inputData.length() > MENSSAGE_SIZE)) {
-      cout << endl << inputData << " não é uma [mensagem] válida! " << "Digite novamente: ";
+      cout << endl << "\tEntre com dados válidos! Digite novamente: ";
       getline(cin, inputData);
       // cin.ignore();
-      validateInput(inputData, 40);
+      validateInput(inputData, MENSSAGE_SIZE);
     }
     else
       return inputData;
@@ -105,36 +81,35 @@ void Form::formCreate() {
   cout << endl << "\tMódulo de Cadastro - Inserir uma CI" << endl;
   cout << endl << "\t\tObs.: Nenhum dado pode ser omitido ou dada a entrada de forma inrregular!" << endl;
 
-  cout << endl << "De (nome do remetente, max 100 caracteres): ";
+  cout << endl << "DE (max 100 caracteres): ";
   getline(cin, senderCI);
   // Verificar se os dados de não estão vazios
-  senderCI = validateInput(senderCI, 10);
+  senderCI = validateInput(senderCI, SENDER_RECIPIENT_SUBJECT_SIZE);
 
-  cout << endl << "Para (nome do destinatário, max 100 caracteres): ";
+  cout << endl << "PARA (max 100 caracteres): ";
   getline(cin, recipientCI);
   // Verificar se os dados de não estão vazios
-  recipientCI = validateInput(recipientCI, 20);
+  recipientCI = validateInput(recipientCI, SENDER_RECIPIENT_SUBJECT_SIZE);
 
-  cout << endl << "Assunto (max 100 caracteres): ";
+  cout << endl << "ASSUNTO (max 100 caracteres): ";
   getline(cin, subjectCI);
   // Verificar se os dados de não estão vazios
-  subjectCI = validateInput(subjectCI, 30);
+  subjectCI = validateInput(subjectCI, SENDER_RECIPIENT_SUBJECT_SIZE);
 
-  cout << endl << "Menssagem (max 500 caracteres): ";
+  cout << endl << "MENSAGEM (max 500 caracteres): ";
   getline(cin, messageCI);
   // Verificar se os dados de não estão vazios
-  messageCI = validateInput(messageCI, 40);
+  messageCI = validateInput(messageCI, MENSSAGE_SIZE);
 
   // Inicialização das Váriaveis dataCI
   dateCI = getSystemDate();
 
+  // Rotina de Incrementar a váriavel de indentificação "idCI"
   if (Data.empty())
     idCI = 1;
   
   else
     idCI = (Data.size() + 1);
-
-  // cin.ignore();
 
   // Criar rotina de utilizar do crudCreate
   crudCreate(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI);

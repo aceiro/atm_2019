@@ -80,7 +80,8 @@ int main() {
     }
 
     if (option == "SELECT") {
-      cout << SELECT << endl;
+      // cout << SELECT << endl;
+      form.formSelect();  
       components.pauseScreen();
     }
     
