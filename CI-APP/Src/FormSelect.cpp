@@ -15,12 +15,12 @@ using std::endl;
 using std::string;
 
 void Form::formSelect() {
-  for (unsigned i = 0; i < Data.size(); i++) {
+  for (unsigned index = 0; index < Data.size(); index++) {
     cout << endl;
-    cout << Data[i].getIdCI() << endl;
-    cout << Data[i].getSenderCI() << "\t" << Data[i].getRecipientCI() << endl;
-    cout << Data[i].getSubjectCI() << "\t" << Data[i].getDateCI() << endl;
-    cout << Data[i].getMessageCI() << endl;
+    cout << "Código: " << Data[index].getIdCI() << endl;
+    cout << "De: " << Data[index].getSenderCI() << "\tPara: " << Data[index].getRecipientCI() << endl;
+    cout << "Assunto: " << Data[index].getSubjectCI() << "\tData: " << Data[index].getDateCI() << endl;
+    cout << "Mensagem: " << Data[index].getMessageCI() << endl;
     cout << endl;
   }
 

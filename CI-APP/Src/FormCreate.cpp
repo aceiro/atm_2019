@@ -35,7 +35,7 @@ string Form::getSystemDate() {
   timeInfo = localtime(&t_Date);
 
   // "strftime", converte nosso tipo de data para uma string, que nosso caso é o "buffer"
-  strftime(buffer, DATE_SIZE, "%d/%m%/Y", timeInfo);
+  strftime(buffer, DATE_SIZE, "%d/%m/%Y", timeInfo);
 
   // retornamos nossa string, para que seja usada no restante do programa
   sBuffer = buffer;
