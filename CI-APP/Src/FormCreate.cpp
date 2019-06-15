@@ -15,7 +15,6 @@ using std::endl;
 using std::string;
 
 // Conversão de tipo data para string
-// const char *Form::getSystemDate() {
 string Form::getSystemDate() {
   // "t_Date" será nossa váriavel para passagem de referênica dos valores de data
   time_t t_Date;
@@ -42,7 +41,33 @@ string Form::getSystemDate() {
   return sBuffer;
 }
 
+// Gerando código idCI (código único) 
+// reutilizando trechos do código da hora formatada.
+string Form::createIdCI() {
+  time_t t_Date;
+  struct tm *timeInfo;
+  char cd[DATE_SIZE];
+  string sCd;
+  // double id;
+  
+  time(&t_Date); 
+  timeInfo = localtime(&t_Date);
+
+  // "strftime", converte nosso tipo de data para uma string: 
+  // ano(4)%mes(2)%dia(2)%hora(2)%minuto(2)%segundo(2)
+  // Exemplo: sendo hoje 23/10/1989 e agora 10:35:56
+  // 23101989103556
+  strftime(cd, DATE_SIZE, "%Y%m%d%H%M%s", timeInfo);
+
+  // retornamos nossa string, para que seja usada no restante do programa
+  sCd = cd;
+  return sCd;
+}
+
 // Validação de entrada de dados no formulário
+// ERRO:
+// Entender o que está ocorrendo quando a validação está entrando em ação
+// Pois, acaba dando erro de que a funçao estourou
 string Form::validateInput(string inputData, int optCheckIn) {
   // Aqui, primeiramente verifica qual campo está entrando e depois, valida o mesmo
   if (optCheckIn == SENDER_RECIPIENT_SUBJECT_SIZE) {
@@ -70,16 +95,16 @@ string Form::validateInput(string inputData, int optCheckIn) {
 
 void Form::formCreate() {
   // Váriaveis para inserção no Formulário
-  int idCI;
-  string senderCI; // optCheckIn == 10;
-  string recipientCI; // optCheckIn == 20;
-  string subjectCI; // optCheckIn == 30;
+  string idCI;
+  string senderCI; // SENDER_RECIPIENT_SUBJECT_SIZE
+  string recipientCI; // SENDER_RECIPIENT_SUBJECT_SIZE
+  string subjectCI; // SENDER_RECIPIENT_SUBJECT_SIZE
   string dateCI; 
-  string messageCI; // optCheckIn == 40;
+  string messageCI; // SENDER_RECIPIENT_SUBJECT_SIZE
 
   // Entrada de dados
-  cout << endl << "\tMódulo de Cadastro - Inserir uma CI" << endl;
-  cout << endl << "\t\tObs.: Nenhum dado pode ser omitido ou dada a entrada de forma inrregular!" << endl;
+  cout << endl << "\t\tMódulo de Cadastro - Inserir uma CI" << endl;
+  cout << endl << "\tObs.: Entre com dados válidos! Não omita nenhum campo!" << endl;
 
   cout << endl << "DE (max 100 caracteres): ";
   getline(cin, senderCI);
@@ -105,11 +130,14 @@ void Form::formCreate() {
   dateCI = getSystemDate();
 
   // Rotina de Incrementar a váriavel de indentificação "idCI"
-  if (Data.empty())
-    idCI = 1;
+  // if (Data.empty())
+    // idCI = 1;
   
-  else
-    idCI = (Data.size() + 1);
+  // else
+    // idCI = (Data.size() + 1);
+
+  // idCI é uma string resultante da concatenação de ano+mes+dia+hora+minuto+segundos
+  idCI = createIdCI();
 
   // Criar rotina de utilizar do crudCreate
   crudCreate(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI);
@@ -117,7 +145,7 @@ void Form::formCreate() {
   cout << endl << "OK! Registro Criado, pressione ENTER para continuar." << endl;
 }
 
-void Form::crudCreate(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) {
+void Form::crudCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) {
   // Verificação da Posição a ser inserido, e inserção
   // Insere no início, quando a estrutura de dados está vazia
   if (Data.empty())

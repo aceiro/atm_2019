@@ -29,7 +29,7 @@ class Form {
     // Declaração da Classe FormData que será nossa base de dados 
     class FormData {
       private:
-        int idCI;
+        string idCI;
         string senderCI;
         string recipientCI;
         string subjectCI;
@@ -38,7 +38,7 @@ class Form {
       
       public:
         // Construtor/Destrutor da Classe FormData
-        FormData(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
+        FormData(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
         ~FormData();
         // Métodos da Classe FormData
         void setIdCI();
@@ -47,7 +47,7 @@ class Form {
         void setSubjectCI(string subjectCI);
         void setDateCI();
         void setMessageCI(string menssageCI);
-        int getIdCI();
+        string getIdCI();
         string getSenderCI();
         string getRecipientCI();
         string getSubjectCI();
@@ -69,15 +69,18 @@ class Form {
     void formDelete();
 
     // Métodos da Classe Form (Basicamente farão as operações do CRUD)
-    void crudCreate(int idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
-    void crudSelect(int idCI);
-    void crudUpdate(int idCI);
-    void crudDelete(int idCI);
+    void crudCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
+    void crudSelect(string idCI);
+    void crudUpdate(string idCI);
+    void crudDelete(string idCI);
 
-    // Método de validação ou conversão de dados
-    // const char *getSystemDate();
+    // Método de geração de data
     string getSystemDate();
+    // Método de validação de entrada de formulário
     string validateInput(string inputData, int optCheckIn);
+    // Método de criaçaõ dos idCI, que sempre será único
+    // Aqui, usamos uma string, por comodidade, e por conta do tamanho do campo (15)
+    string createIdCI();
 };
   
 #endif  
