@@ -15,6 +15,7 @@ class Components {
   private:
     
   public:
+    // Construtor/Destrutor da Classe FormData
     Components();
     ~Components();
     string mainTitle;

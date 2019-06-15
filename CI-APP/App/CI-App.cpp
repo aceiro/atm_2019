@@ -1,7 +1,7 @@
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
 #include <string>
-#include <locale.h>
+#include <locale.h> // Biblioteca interna do C++ para usar padrões de linguagem de acordo com o idioma
 //#include <iomanip>
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)
@@ -30,6 +30,7 @@ int main() {
   Components components;
   Help help;
   MenuTemplate::MenuTemplate menu;
+  Form form;
 
   // Declaração das váriaveis locais
   string option;
@@ -79,12 +80,14 @@ int main() {
     }
 
     if (option == "SELECT") {
-      cout << SELECT << endl;
+      // cout << SELECT << endl;
+      form.formSelect();  
       components.pauseScreen();
     }
     
     if (option == "CREATE") {
-      cout << CREATE << endl;
+      //cout << CREATE << endl;
+      form.formCreate();
       components.pauseScreen();
     }
 
