@@ -79,8 +79,9 @@ class Form {
     // Método de validação de entrada de formulário
     string validateInput(string inputData, int optCheckIn);
     // Método de criaçaõ dos idCI, que sempre será único
-    // Aqui, usamos uma string, por comodidade, e por conta do tamanho do campo (15)
+    // Aqui, usamos uma string, por comodidade, e por conta do tamanho do campo (15)  
     string createIdCI();
+    void emptyMessage();
 };
   
 #endif  
