@@ -64,15 +64,13 @@ class Form {
     
     // Métodos de entrada/inserção de dados para serem gravados ou não
     void formCreate();
+    void formCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
     void formSelect();
+    bool formSelect(string idCI);
+    void displaySelectCI(string idCI);
+    void displayRecordsReport();
     void formUpdate();
     void formDelete();
-
-    // Métodos da Classe Form (Basicamente farão as operações do CRUD)
-    void crudCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
-    void crudSelect(string idCI);
-    void crudUpdate(string idCI);
-    void crudDelete(string idCI);
 
     // Método de geração de data
     string getSystemDate();
