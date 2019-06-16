@@ -14,6 +14,62 @@ using std::getline;
 using std::endl;
 using std::string;
 
+void Form::formCreate() {
+  // Váriaveis para inserção no Formulário
+  string idCI;
+  string senderCI; // SENDER_RECIPIENT_SUBJECT_SIZE
+  string recipientCI; // SENDER_RECIPIENT_SUBJECT_SIZE
+  string subjectCI; // SENDER_RECIPIENT_SUBJECT_SIZE
+  string dateCI; 
+  string messageCI; // SENDER_RECIPIENT_SUBJECT_SIZE
+
+  // Entrada de dados
+  cout << endl << "\t\tMÓDULO DE CADASTRO - INSERIR UMA CI" << endl;
+  cout << endl << "\tObs.: Entre com dados válidos! Não omita nenhum campo!" << endl;
+
+  cout << endl << "DE (max 100 caracteres): ";
+  getline(cin, senderCI);
+  // Verificar se os dados de não estão vazios
+  senderCI = validateInput(senderCI, SENDER_RECIPIENT_SUBJECT_SIZE);
+
+  cout << endl << "PARA (max 100 caracteres): ";
+  getline(cin, recipientCI);
+  // Verificar se os dados de não estão vazios
+  recipientCI = validateInput(recipientCI, SENDER_RECIPIENT_SUBJECT_SIZE);
+
+  cout << endl << "ASSUNTO (max 100 caracteres): ";
+  getline(cin, subjectCI);
+  // Verificar se os dados de não estão vazios
+  subjectCI = validateInput(subjectCI, SENDER_RECIPIENT_SUBJECT_SIZE);
+
+  cout << endl << "MENSAGEM (max 500 caracteres): ";
+  getline(cin, messageCI);
+  // Verificar se os dados de não estão vazios
+  messageCI = validateInput(messageCI, MENSSAGE_SIZE);
+
+  // Inicialização das Váriaveis dataCI
+  dateCI = getSystemDate();
+
+  // idCI é uma string resultante da concatenação de ano+mes+dia+hora+minuto+segundos
+  idCI = createIdCI();
+
+  // Criar rotina de utilizar do crudCreate
+  formCreate(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI);
+
+  cout << endl << "OK! Registro Criado, pressione ENTER para continuar." << endl;
+}
+
+void Form::formCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) {
+  // Verificação da Posição a ser inserido, e inserção
+  // Insere no início, quando a estrutura de dados está vazia
+  if (Data.empty())
+    Data.insert(Data.begin(), FormData(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI));
+
+  // Insere no final, quando já existir algum registro na estrtutura de dados
+  else
+    Data.push_back(FormData(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI));
+}
+
 // Conversão de tipo data para string
 string Form::getSystemDate() {
   // "t_Date" será nossa váriavel para passagem de referênica dos valores de data
@@ -91,68 +147,4 @@ string Form::validateInput(string inputData, int optCheckIn) {
     else
       return inputData;
   } 
-}
-
-void Form::formCreate() {
-  // Váriaveis para inserção no Formulário
-  string idCI;
-  string senderCI; // SENDER_RECIPIENT_SUBJECT_SIZE
-  string recipientCI; // SENDER_RECIPIENT_SUBJECT_SIZE
-  string subjectCI; // SENDER_RECIPIENT_SUBJECT_SIZE
-  string dateCI; 
-  string messageCI; // SENDER_RECIPIENT_SUBJECT_SIZE
-
-  // Entrada de dados
-  cout << endl << "\t\tMódulo de Cadastro - Inserir uma CI" << endl;
-  cout << endl << "\tObs.: Entre com dados válidos! Não omita nenhum campo!" << endl;
-
-  cout << endl << "DE (max 100 caracteres): ";
-  getline(cin, senderCI);
-  // Verificar se os dados de não estão vazios
-  senderCI = validateInput(senderCI, SENDER_RECIPIENT_SUBJECT_SIZE);
-
-  cout << endl << "PARA (max 100 caracteres): ";
-  getline(cin, recipientCI);
-  // Verificar se os dados de não estão vazios
-  recipientCI = validateInput(recipientCI, SENDER_RECIPIENT_SUBJECT_SIZE);
-
-  cout << endl << "ASSUNTO (max 100 caracteres): ";
-  getline(cin, subjectCI);
-  // Verificar se os dados de não estão vazios
-  subjectCI = validateInput(subjectCI, SENDER_RECIPIENT_SUBJECT_SIZE);
-
-  cout << endl << "MENSAGEM (max 500 caracteres): ";
-  getline(cin, messageCI);
-  // Verificar se os dados de não estão vazios
-  messageCI = validateInput(messageCI, MENSSAGE_SIZE);
-
-  // Inicialização das Váriaveis dataCI
-  dateCI = getSystemDate();
-
-  // Rotina de Incrementar a váriavel de indentificação "idCI"
-  // if (Data.empty())
-    // idCI = 1;
-  
-  // else
-    // idCI = (Data.size() + 1);
-
-  // idCI é uma string resultante da concatenação de ano+mes+dia+hora+minuto+segundos
-  idCI = createIdCI();
-
-  // Criar rotina de utilizar do crudCreate
-  crudCreate(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI);
-
-  cout << endl << "OK! Registro Criado, pressione ENTER para continuar." << endl;
-}
-
-void Form::crudCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) {
-  // Verificação da Posição a ser inserido, e inserção
-  // Insere no início, quando a estrutura de dados está vazia
-  if (Data.empty())
-    Data.insert(Data.begin(), FormData(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI));
-
-  // Insere no final, quando já existir algum registro na estrtutura de dados
-  else
-    Data.push_back(FormData(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI));
-
 }

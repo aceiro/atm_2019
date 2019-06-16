@@ -1,6 +1,7 @@
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
 #include <string>
+#include <iomanip> // Biblioteca interna do C++ para trabalhar com alinhamento (width, right, etc)
 #include <ctime> // Biblioteca interna do C++ para usar padrões de data hora do sistema
 #include <cctype> // Biblioteca interna do C++ para usar "isdigit"
 
@@ -13,17 +14,97 @@ using std::cin;
 using std::getline;
 using std::endl;
 using std::string;
+using std::setw; // setw() é uma função para alinhar a largura
+using std::left; // alinha a esquerda
+
 
 void Form::formSelect() {
+  string idCI;
+  int escape = 0;
+
+  cout << endl << "\t\tMÓDULO DE CONSULTA - SELECIONAR UMA CI" << endl << endl;
+  
+  if (!Data.empty()) {
+    // Imprimindo todas os Registros de CI
+    displayRecordsReport();
+
+    do {
+      // Escolhendo qual será o registro a ser retornado, para ver recuperar todos os dados
+      cout << endl << "CONSULTAR ID. (escolha entre os registros acima): ";
+      getline(cin, idCI);
+      
+      // Váriavel de Controle de exibições do Loop 
+      escape++;
+
+      // Controle do Loop
+      if (escape == 5) {
+        cout << endl << endl << "Abortando Processo..." << endl << endl;
+        break;
+      }
+  
+    } while (!formSelect(idCI));
+
+    displaySelectCI(idCI);
+  }
+  else
+    emptyMessage();
+}
+
+// Método para verificar se um registro está presente na estrutura de dados
+bool Form::formSelect(string idCI) {
   for (unsigned index = 0; index < Data.size(); index++) {
-    cout << endl;
-    cout << "Código: " << Data[index].getIdCI() << endl;
-    cout << "De: " << Data[index].getSenderCI() << "\tPara: " << Data[index].getRecipientCI() << endl;
-    cout << "Assunto: " << Data[index].getSubjectCI() << "\tData: " << Data[index].getDateCI() << endl;
-    cout << "Mensagem: " << Data[index].getMessageCI() << endl;
-    cout << endl;
+    // Condição para ser que o registro exista
+    if ((Data[index].getIdCI()) == idCI)
+      return true;
   }
 
+  return false;
+}
 
+// Método para imprimir (Formulário de impressão) a CI que tem a referência do ID utilizado
+void Form::displaySelectCI(string idCI) {
+  for (unsigned index = 0; index < Data.size(); index++) {
+    if ((Data[index].getIdCI()) == idCI) {
+      cout << endl << endl;
+      cout << "ID.: "; 
+      cout << setw(49) << left << Data[index].getIdCI();
+      cout << "DATA: ";
+      cout << setw(15) << left << Data[index].getDateCI();
+      cout << endl << endl;
+      cout << "DE: ";
+      cout << setw(50) << left << Data[index].getSenderCI();
+      cout << "PARA: ";
+      cout << setw(50) << left << Data[index].getRecipientCI();
+      cout << endl << endl;
+      cout << "ASSUNTO: ";
+      cout << setw(100) << left << Data[index].getSubjectCI();
+      cout << endl << endl;
+      cout << "MENSAGEM: ";
+      cout << setw(500) << left << Data[index].getMessageCI();
+      cout << endl << endl;
+    }
+  }
+}
 
+// Método para mensagem padrão de registro não encontrado, quando a estrutura de dados está vazia
+void Form::emptyMessage() {
+  cout << endl << endl << "\t\t" << "Nenhum registro foi encontrado!!!" << endl << endl;
+}
+
+// Método para Imprimir uma especie de relatórios de registros.
+void Form::displayRecordsReport() {
+  // Cabeçalho da tabela (campos identificação, data, mensagem)
+  cout << endl;
+  cout << setw(30) << left << "ID.";
+  cout << setw(15) << left << "DATA";
+  cout << setw(100) << left << "ASSUNTO";
+  cout << endl;
+
+  // Loop para carregar todas as mensagens armazenada no Vector (em memória)
+  for (unsigned index = 0; index < Data.size(); index++) {
+    cout << setw(30) << left << Data[index].getIdCI();
+    cout << setw(15) << left << Data[index].getDateCI();
+    cout << setw(100) << left << Data[index].getSubjectCI();
+    cout << endl;
+  }
 }
