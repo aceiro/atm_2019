@@ -22,10 +22,6 @@ Form::~Form() {
 Form::FormData::FormData(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) : idCI(idCI), senderCI(senderCI), recipientCI(recipientCI), subjectCI(subjectCI), dateCI(dateCI), messageCI(messageCI) {
 
 }
-
-Form::FormData::FormData(string senderCI) : senderCI(senderCI) {
-
-}
   
 Form::FormData::~FormData(){
 

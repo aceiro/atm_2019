@@ -41,6 +41,7 @@ void Form::formSelect() {
     } while (!formSelect(idCI));
 
     displaySelectCI(idCI);
+    successfulMessage();
   }
   else
     emptyMessage();
@@ -82,9 +83,35 @@ void Form::displaySelectCI(string idCI) {
   }
 }
 
+// Método para imprimir (Uso no método UPDATE) a CI que tem a referência do ID utilizado
+void Form::displaySelectCI(string idCI, string toUpdate) {
+  for (unsigned index = 0; index < Data.size(); index++) {
+    if ((Data[index].getIdCI()) == idCI) {
+      cout << endl << endl;
+      cout << "ID.: "; 
+      cout << setw(49) << left << Data[index].getIdCI();
+      cout << "DATA: ";
+      cout << setw(15) << left << Data[index].getDateCI();
+      cout << endl << endl;
+      cout << "[A] - DE: ";
+      cout << setw(50) << left << Data[index].getSenderCI();
+      cout << endl << endl;
+      cout << "[B] - PARA: ";
+      cout << setw(50) << left << Data[index].getRecipientCI();
+      cout << endl << endl;
+      cout << "[C] - ASSUNTO: ";
+      cout << setw(100) << left << Data[index].getSubjectCI();
+      cout << endl << endl;
+      cout << "[D] - MENSAGEM: ";
+      cout << setw(500) << left << Data[index].getMessageCI();
+      cout << endl << endl;
+    }
+  }
+}
+
 // Método para mensagem padrão de registro não encontrado, quando a estrutura de dados está vazia
 void Form::emptyMessage() {
-  cout << endl << endl << "\t\t" << "Nenhum registro foi encontrado!!!" << endl << endl;
+  cout << endl << endl << "\t\tNenhum registro foi encontrado!!!" << endl << endl;
 }
 
 // Método para Imprimir uma especie de relatórios de registros.
@@ -107,10 +134,10 @@ void Form::displayRecordsReport() {
 
 // Método para mensagem padrão para cancelar o processo
 void Form::abortingProcessMessage() {
-  cout << endl << endl << "Abortando Processo..." << endl << endl;
+  cout << endl << endl << "\t\tAbortando Processo..." << endl << endl;
 }
 
 // Método para mensagem padrão de quando registro procurado não foi encontrado.
 void Form::recordNotFoundMenssage() {
-  cout << endl << endl << "Registro não encontrado..." << endl << endl;
+  cout << endl << endl << "\t\tRegistro não encontrado..." << endl << endl;
 }

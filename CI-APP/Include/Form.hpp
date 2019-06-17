@@ -45,7 +45,6 @@ class Form {
       public:
         // Construtor/Destrutor da Classe FormData
         FormData(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
-        FormData(string senderCI);
         ~FormData();
         // Métodos da Classe FormData
         void setIdCI();
@@ -75,6 +74,7 @@ class Form {
     void formSelect();
     bool formSelect(string idCI);
     void displaySelectCI(string idCI);
+    void displaySelectCI(string idCI, string toUpdate);
     void displayRecordsReport();
     void formUpdate();
     void formUpdate(string idCI, string fieldCI, char optUpdate);
@@ -84,15 +84,20 @@ class Form {
     string getSystemDate();
     // Método de validação de entrada de formulário
     string validateInput(string inputData, int optCheckIn);
+    bool auxValidateInput(string inputData, int optCheckIn);
     // Método de criaçaõ dos idCI, que sempre será único
     // Aqui, usamos uma string, por comodidade, e por conta do tamanho do campo (15)  
     string createIdCI();
+    // Método para mensagem de sucesso na operação
+    void successfulMessage();
     // Método para mensagem de que não existem dados gravados
     void emptyMessage();
     // Método para mensagem quando não encontrar o dados procurador
     void recordNotFoundMenssage();
     // Método para mensagem de cancelamento do processo
     void abortingProcessMessage();
+    // Método para mensagem de como o cadastro deve ser informado
+    void inputStandardMessage();
 };
   
 #endif  
