@@ -24,7 +24,7 @@ void Form::formCreate() {
   string messageCI; // SENDER_RECIPIENT_SUBJECT_SIZE
 
   // Entrada de dados
-  cout << endl << "\t\tMÓDULO DE CADASTRO - INSERIR UMA CI" << endl;
+  // cout << endl << "\t\tMÓDULO DE CADASTRO - INSERIR UMA CI" << endl;
   cout << endl << "\tObs.: Entre com dados válidos! Não omita nenhum campo!" << endl;
 
   cout << endl << "DE (max 100 caracteres): ";

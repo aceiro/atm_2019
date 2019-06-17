@@ -8,6 +8,12 @@
 #include <vector>
 #include <ctime>
 
+// 
+#define CREATE_FORM_TITLE "MÓDULO DE CADASTRO - INSERIR UMA CI"
+#define SELECT_FORM_TITLE "MÓDULO DE CONSULTA - PESQUISE UMA CI"
+#define UPDATE_FORM_TITLE "MÓDULO DE ATUALIZAÇÃO - MODIFIQUE UMA CI"
+#define DELETE_FORM_TITLE "MÓDULO DE REMOÇÃO - REMOVA UMA CI"
+
 // Tamanho padrão para armazenar os tamanhos das strings.
 #define DATE_SIZE 100
 #define SENDER_RECIPIENT_SUBJECT_SIZE 100 
@@ -39,6 +45,7 @@ class Form {
       public:
         // Construtor/Destrutor da Classe FormData
         FormData(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI);
+        FormData(string senderCI);
         ~FormData();
         // Métodos da Classe FormData
         void setIdCI();
@@ -70,6 +77,7 @@ class Form {
     void displaySelectCI(string idCI);
     void displayRecordsReport();
     void formUpdate();
+    void formUpdate(string idCI, string fieldCI, char optUpdate);
     void formDelete();
 
     // Método de geração de data
@@ -79,7 +87,12 @@ class Form {
     // Método de criaçaõ dos idCI, que sempre será único
     // Aqui, usamos uma string, por comodidade, e por conta do tamanho do campo (15)  
     string createIdCI();
+    // Método para mensagem de que não existem dados gravados
     void emptyMessage();
+    // Método para mensagem quando não encontrar o dados procurador
+    void recordNotFoundMenssage();
+    // Método para mensagem de cancelamento do processo
+    void abortingProcessMessage();
 };
   
 #endif  

@@ -2,8 +2,6 @@
 #include <iostream>
 #include <string>
 #include <iomanip> // Biblioteca interna do C++ para trabalhar com alinhamento (width, right, etc)
-#include <ctime> // Biblioteca interna do C++ para usar padrões de data hora do sistema
-#include <cctype> // Biblioteca interna do C++ para usar "isdigit"
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)
 #include "../Include/Form.hpp"
@@ -21,8 +19,6 @@ using std::left; // alinha a esquerda
 void Form::formSelect() {
   string idCI;
   int escape = 0;
-
-  cout << endl << "\t\tMÓDULO DE CONSULTA - SELECIONAR UMA CI" << endl << endl;
   
   if (!Data.empty()) {
     // Imprimindo todas os Registros de CI
@@ -38,10 +34,10 @@ void Form::formSelect() {
 
       // Controle do Loop
       if (escape == 5) {
-        cout << endl << endl << "Abortando Processo..." << endl << endl;
+        recordNotFoundMenssage();
+        abortingProcessMessage();
         break;
       }
-  
     } while (!formSelect(idCI));
 
     displaySelectCI(idCI);
@@ -107,4 +103,14 @@ void Form::displayRecordsReport() {
     cout << setw(100) << left << Data[index].getSubjectCI();
     cout << endl;
   }
+}
+
+// Método para mensagem padrão para cancelar o processo
+void Form::abortingProcessMessage() {
+  cout << endl << endl << "Abortando Processo..." << endl << endl;
+}
+
+// Método para mensagem padrão de quando registro procurado não foi encontrado.
+void Form::recordNotFoundMenssage() {
+  cout << endl << endl << "Registro não encontrado..." << endl << endl;
 }
