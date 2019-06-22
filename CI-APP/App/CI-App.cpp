@@ -70,23 +70,25 @@ int main() {
     }
 
     if (option == "DELETE") {
+      cout << endl << "\t\t" << DELETE_FORM_TITLE << endl;
       cout << DELETE << endl;
       components.pauseScreen();
     }
 
     if (option == "UPDATE") {
-      cout << UPDATE << endl;
+      cout << endl << "\t\t" << UPDATE_FORM_TITLE << endl;
+      form.formUpdate();
       components.pauseScreen();
     }
 
     if (option == "SELECT") {
-      // cout << SELECT << endl;
+      cout << endl << "\t\t" << SELECT_FORM_TITLE << endl;
       form.formSelect();  
       components.pauseScreen();
     }
     
     if (option == "CREATE") {
-      //cout << CREATE << endl;
+      cout << endl << "\t\t" << CREATE_FORM_TITLE << endl;
       form.formCreate();
       components.pauseScreen();
     }

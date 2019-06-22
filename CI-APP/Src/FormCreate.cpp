@@ -24,8 +24,7 @@ void Form::formCreate() {
   string messageCI; // SENDER_RECIPIENT_SUBJECT_SIZE
 
   // Entrada de dados
-  cout << endl << "\t\tMÓDULO DE CADASTRO - INSERIR UMA CI" << endl;
-  cout << endl << "\tObs.: Entre com dados válidos! Não omita nenhum campo!" << endl;
+  cout << endl << endl << "\tObs.: Entre com dados válidos! Não omita nenhum campo!" << endl << endl;
 
   cout << endl << "DE (max 100 caracteres): ";
   getline(cin, senderCI);
@@ -56,7 +55,8 @@ void Form::formCreate() {
   // Criar rotina de utilizar do crudCreate
   formCreate(idCI, senderCI, recipientCI, subjectCI, dateCI, messageCI);
 
-  cout << endl << "OK! Registro Criado, pressione ENTER para continuar." << endl;
+  // Rertorna da Mensagem de confirmação do procedimento.
+  successfulMessage();
 }
 
 void Form::formCreate(string idCI, string senderCI, string recipientCI, string subjectCI, string dateCI, string messageCI) {
@@ -121,30 +121,48 @@ string Form::createIdCI() {
 }
 
 // Validação de entrada de dados no formulário
-// ERRO:
-// Entender o que está ocorrendo quando a validação está entrando em ação
-// Pois, acaba dando erro de que a funçao estourou
 string Form::validateInput(string inputData, int optCheckIn) {
+  int escape = 0;
+
   // Aqui, primeiramente verifica qual campo está entrando e depois, valida o mesmo
-  if (optCheckIn == SENDER_RECIPIENT_SUBJECT_SIZE) {
-    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (inputData.length() > SENDER_RECIPIENT_SUBJECT_SIZE)) {
-      cout << endl << "\tEntre com dados válidos! Digite novamente: ";
-      getline(cin, inputData);
-      // cin.ignore();
-      validateInput(inputData, SENDER_RECIPIENT_SUBJECT_SIZE);
+  while (!auxValidateInput(inputData, optCheckIn)) { 
+    cout << endl<< endl << "\tEntre com dados válidos! Digite novamente: ";
+    getline(cin, inputData);
+
+    // Váriavel de Controle de exibições do Loop 
+    escape++;
+
+    // Controle do Loop
+    if (escape == NUMBER_OF_ATTMPTS) {
+      escape = 0;
+      inputStandardMessage();
     }
-    else
-      return inputData;
-  } 
+
+  }
+
+  return inputData;
+}
+
+// Auxiliar para validação da entrada dos dados
+bool Form::auxValidateInput(string inputData, int optCheckIn) {
+  if (inputData.empty())
+    return false;
   
-  if (optCheckIn == MENSSAGE_SIZE) {
-    if ((inputData.empty()) || (isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (inputData.length() > MENSSAGE_SIZE)) {
-      cout << endl << "\tEntre com dados válidos! Digite novamente: ";
-      getline(cin, inputData);
-      // cin.ignore();
-      validateInput(inputData, MENSSAGE_SIZE);
-    }
-    else
-      return inputData;
-  } 
+  if ((isdigit(inputData[0])) || (isdigit(inputData[1])) || (isdigit(inputData[2])) || (isdigit(inputData[3])) || (isdigit(inputData[4])))
+    return false;
+
+  if (((optCheckIn == SENDER_RECIPIENT_SUBJECT_SIZE) && (inputData.size() > SENDER_RECIPIENT_SUBJECT_SIZE)) || ((optCheckIn == MENSSAGE_SIZE) && (inputData.length() > MENSSAGE_SIZE)))
+    return false;
+
+  return true;
+}
+
+// Mensagem padrão para procedimento realizados com sucesso
+void Form::successfulMessage() {
+  cout << endl << endl << "OK! pressione ENTER para continuar." << endl << endl;
+}
+
+// Mensagem padrão, de orientações para o cadastro
+void Form::inputStandardMessage() {
+  cout << endl << endl << "ATENÇÃO: Cadastro não pode estar vazio, iniciar com números ou ultrapassar quantidade de caracteres!!!";
 }
