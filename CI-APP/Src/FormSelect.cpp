@@ -33,7 +33,7 @@ void Form::formSelect() {
       escape++;
 
       // Controle do Loop
-      if (escape == 5) {
+      if (escape == NUMBER_OF_ATTMPTS) {
         recordNotFoundMenssage();
         abortingProcessMessage();
         break;
@@ -93,16 +93,16 @@ void Form::displaySelectCI(string idCI, string toUpdate) {
       cout << "DATA: ";
       cout << setw(15) << left << Data[index].getDateCI();
       cout << endl << endl;
-      cout << "[A] - DE: ";
+      cout << "[ A ] - DE: ";
       cout << setw(50) << left << Data[index].getSenderCI();
       cout << endl << endl;
-      cout << "[B] - PARA: ";
+      cout << "[ B ] - PARA: ";
       cout << setw(50) << left << Data[index].getRecipientCI();
       cout << endl << endl;
-      cout << "[C] - ASSUNTO: ";
+      cout << "[ C ] - ASSUNTO: ";
       cout << setw(100) << left << Data[index].getSubjectCI();
       cout << endl << endl;
-      cout << "[D] - MENSAGEM: ";
+      cout << "[ D ] - MENSAGEM: ";
       cout << setw(500) << left << Data[index].getMessageCI();
       cout << endl << endl;
     }

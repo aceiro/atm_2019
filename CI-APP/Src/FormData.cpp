@@ -47,7 +47,7 @@ void Form::FormData::setDateCI() {
   this->dateCI = dateCI;
 }
   
-void Form::FormData::setMessageCI(string menssageCI) {
+void Form::FormData::setMessageCI(string messageCI) {
   this->messageCI = messageCI;
 }
   

@@ -121,9 +121,6 @@ string Form::createIdCI() {
 }
 
 // Validação de entrada de dados no formulário
-// ERRO:
-// Entender o que está ocorrendo quando a validação está entrando em ação
-// Pois, acaba dando erro de que a funçao estourou
 string Form::validateInput(string inputData, int optCheckIn) {
   int escape = 0;
 
@@ -136,7 +133,7 @@ string Form::validateInput(string inputData, int optCheckIn) {
     escape++;
 
     // Controle do Loop
-    if (escape == 5) {
+    if (escape == NUMBER_OF_ATTMPTS) {
       escape = 0;
       inputStandardMessage();
     }
@@ -146,7 +143,7 @@ string Form::validateInput(string inputData, int optCheckIn) {
   return inputData;
 }
 
-// Auxiliar para validação da entrada de 
+// Auxiliar para validação da entrada dos dados
 bool Form::auxValidateInput(string inputData, int optCheckIn) {
   if (inputData.empty())
     return false;
