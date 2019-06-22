@@ -1,7 +1,6 @@
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
 #include <string>
-// #include <iomanip> // Biblioteca interna do C++ para trabalhar com alinhamento (width, right, etc)
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)
 #include "../Include/Form.hpp"
@@ -59,8 +58,6 @@ void Form::formUpdate() {
 
         // Controle do Loop
         if (escape == NUMBER_OF_ATTMPTS) {
-          // recordNotFoundMenssage();
-          // abortingProcessMessage();
           break;
         }
 
