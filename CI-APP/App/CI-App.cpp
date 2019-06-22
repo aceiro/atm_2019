@@ -71,7 +71,7 @@ int main() {
 
     if (option == "DELETE") {
       cout << endl << "\t\t" << DELETE_FORM_TITLE << endl;
-      cout << DELETE << endl;
+      form.formDelete();
       components.pauseScreen();
     }
 
@@ -94,9 +94,6 @@ int main() {
     }
 
   } while (option != "END");
-  
-  // else
-    // cout << menu.displayGetName() << endl;
   
   return 0;
 }
