@@ -64,7 +64,8 @@ int main() {
     }
     
     if (option == "PRINT") {
-      cout << PRINT << endl;
+      cout << endl << "\t\t" << PRINT_TITLE << endl;
+      form.formToPrint();
       components.pauseScreen();
     }
 

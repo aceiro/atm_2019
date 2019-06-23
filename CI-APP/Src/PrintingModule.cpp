@@ -1,60 +1,65 @@
-// // Declaração das Bibliotecas internas do Projeto (declação das Classes)
-// #include "../Include/PrintingModule.hpp"
-// #include "../Include/Form.hpp"
+// Declaração das Bibliotecas internas do Projeto (declação das Classes)
+#include "../Include/PrintingModule.hpp"
 
-// // Declaração das Bibliotecas internas do C++ 
-// #include <iostream>
-// #include <string>
+// Declaração das Bibliotecas internas do C++ 
+#include <iostream>
+#include <fstream> 
+#include <string>
+#include <iomanip>
 
-
-// // Uso refinado do Escopo STD
-// using std::cout;
-// using std::cin;
+// Uso refinado do Escopo STD
+using std::cout;
+using std::cin;
 // using std::getline;
-// using std::endl;
-// using std::string;
+using std::endl;
+using std::string;
+using std::ofstream; // "ofstream" é escopo para criar/escrever um arquivo
+using std::setw;
+using std::left;
 
-// void Form::formDelete() {
-//   string idCI;
-//   int escape = 0;
-//   // char optUpdate = '\0';
+PrintingModule::PrintingModule() {
+  
+}
 
-//   if (!Data.empty()) {
-//     // Imprimindo todas os Registros de CI
-//     displayRecordsReport();
+PrintingModule::~PrintingModule() {
 
-//     do {
-//       // Escolhendo qual será o registro a ser retornado, para ver recuperar todos os dados
-//       cout << endl << "EXCLUIR ID. (escolha entre os registros acima): ";
-//       getline(cin, idCI);
-      
-//       // Váriavel de Controle de exibições do Loop 
-//       escape++;
+}
 
-//       // Controle do Loop
-//       if (escape == NUMBER_OF_ATTMPTS) {
-//         recordNotFoundMenssage();
-//         abortingProcessMessage();
-//         break;
-//       }
-//     } while (!formSelect(idCI));
+// Realizar a impressão de acordo com a formatação abaixo, da CI escolhida
+void PrintingModule::printFileCI(string fileName, string printIdCI, string printSenderCI, string printRecipientCI, string printSubjectCI, string printDateCI, string printMessageCI) {
+  // Rotina de abertura para gravação do arquivo
+  formFile.open (fileName);
 
-//     // Caso confirmado a existência do identificado, apaga-se a posição que o mesmo está alocado
-//     // Sendo assim, todo os registros (toda CI) são apagados nesta posição
-//     if (formSelect(idCI)) {
-//       for (unsigned index = 0; index < Data.size(); index++) {
-//         if ((Data[index].getIdCI()) == idCI) {
-//           Data.erase(Data.begin() + index);
-//         }
-//       }
-//     }
-//     successfulMessage();
-    
-//   }
-//   else
-//     emptyMessage();
-// }
+  formFile << endl;
+  formFile << "  ____ ___        _                  _   ___  " << endl;
+  formFile << " / ___|_ _|      / \\   _ __  _ __   / | / _ \\ " << endl;
+  formFile << "| |    | |_____ / _ \\ | '_ \\| '_ \\  | || | | |" << endl;
+  formFile << "| |___ | |_____/ ___ \\| |_) | |_) | | || |_| |" << endl;
+  formFile << " \\____|___|   /_/   \\_\\ .__/| .__/  |_(_)___/ " << endl;
+  formFile << "                      |_|   |_|   " << endl;
 
-// void PrintingModule() {
-//   cout << endl << "Aqui sera o Modulo de Impressao, ainda esta em construcao..." << endl;
-// }
+  formFile << endl << endl << "\t\t" << PRINT_TITLE << endl << endl;
+  formFile << "Nome do Arquivo: " << fileName << endl << endl;
+  
+  formFile << "ID.: "; 
+  formFile << setw(49) << left << printIdCI;
+  formFile << endl << endl;
+  formFile << "DATA: ";
+  formFile << setw(15) << left << printDateCI;
+  formFile << endl << endl;
+  formFile << "DE: ";
+  formFile << setw(50) << left << printSenderCI;
+  formFile << endl << endl;
+  formFile << "PARA: ";
+  formFile << setw(50) << left << printRecipientCI;
+  formFile << endl << endl;
+  formFile << "ASSUNTO: ";
+  formFile << setw(100) << left << printSubjectCI;
+  formFile << endl << endl;
+  formFile << "MENSAGEM: ";
+  formFile << setw(500) << left << printMessageCI;
+  formFile << endl << endl;
+
+  // Rotina de fechamento do arquivo.
+  formFile.close(); 
+}

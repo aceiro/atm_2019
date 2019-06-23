@@ -14,8 +14,7 @@
 using std::cout;
 using std::endl;
 using std::string;
-// Container para utilizar abertura e leitura de arquivos em C++
-using std::ifstream;
+using std::ifstream; // Container para utilizar abertura e leitura de arquivos em C++
 
 // Declaração da Classe de Ajuda
 class Help {
