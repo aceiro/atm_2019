@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <locale.h> // Biblioteca interna do C++ para usar padrões de linguagem de acordo com o idioma
-//#include <iomanip>
 
 // Declaração das Bibliotecas internas do Projeto (declação das Classes)
 #include "../Include/Components.hpp" // Classe Funções (Métodos) auxiliares (Pause, Limpa tela, etc...)
@@ -65,13 +64,14 @@ int main() {
     }
     
     if (option == "PRINT") {
-      cout << PRINT << endl;
+      cout << endl << "\t\t" << PRINT_TITLE << endl;
+      form.formToPrint();
       components.pauseScreen();
     }
 
     if (option == "DELETE") {
       cout << endl << "\t\t" << DELETE_FORM_TITLE << endl;
-      cout << DELETE << endl;
+      form.formDelete();
       components.pauseScreen();
     }
 
@@ -94,9 +94,6 @@ int main() {
     }
 
   } while (option != "END");
-  
-  // else
-    // cout << menu.displayGetName() << endl;
   
   return 0;
 }

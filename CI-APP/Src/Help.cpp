@@ -9,9 +9,8 @@
 // Uso refinado do Escopo STD
 using std::cout;
 using std::endl;
-// "ifstream" e "ios" são escopos para abrir o arquivo, sobre a regra de "apenas leitura"
-using std::ifstream;
-using std::ios;
+using std::ifstream; // "ifstream" é escopo para abrir o arquivo, sobre a regra de "apenas leitura"
+using std::ios; // "ios" é escopo para abrir o arquivo, sobre a regra de "apenas leitura"
 
 Help::Help() {
 
@@ -24,7 +23,7 @@ Help::~Help() {
 // Rotina para abrir o arquivo, e imprimir o mesmo em tela
 void Help::displayHelpFile() {
   // Abrindo o aquivo README.txt, presenta na raiz, como somente em leitura.
-  helpFile.open("../README.txt");
+  helpFile.open("README.txt");
 
   // Rotina para verificar se o arquivo existe, e sim abrí-lo
   if (helpFile.is_open()) {

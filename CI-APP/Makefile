@@ -52,7 +52,8 @@ libform:
 	$(CC) -c $(SRC)/$(FORM)Update.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Update.o
 	$(CC) -c $(SRC)/$(FORM)Delete.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Delete.o
 	$(CC) -c $(SRC)/$(FORM)Data.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)Data.o
-	ar -rcs $(LIB)/LibForm.a $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)Data.o
+	$(CC) -c $(SRC)/$(FORM)ToPrint.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/$(FORM)ToPrint.o
+	ar -rcs $(LIB)/LibForm.a $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)Data.o $(OBJ)/$(FORM)ToPrint.o
 
 
 # TAG 4

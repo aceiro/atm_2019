@@ -81,6 +81,7 @@ class Form {
     void formUpdate();
     void formUpdate(string idCI, string fieldCI, int idField);
     void formDelete();
+    void formToPrint();
 
     // Método de geração de data
     string getSystemDate();
