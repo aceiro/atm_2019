@@ -34,7 +34,6 @@ class QAModule {
     void updateTest(string testIdCI, string testSenderCI, string testRecipientCI, string testSubjectCI, string testDateCI, string testMessageCI, char optA, char optB, char optC, char optD);
     void deleteTest(string testIdCI);
     void printTest(string testIdCI);
-    int capacityTest(string testIdCI, string testSenderCI, string testRecipientCI, string testSubjectCI, string testDateCI, string testMessageCI);
 };
 
 #endif

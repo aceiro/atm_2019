@@ -23,9 +23,7 @@ void Form::formToPrint() {
   string printSubjectCI;
   string printDateCI;
   string printMessageCI;
-  // string idCI;
   int escape = 0;
-  // char optUpdate = '\0';
 
   if (!Data.empty()) {
     // Imprimindo todas os Registros de CI
@@ -50,26 +48,32 @@ void Form::formToPrint() {
     // Caso confirmado a existência do identificado, será usado como referência
     // para gerar a impressão
     if (formSelect(printIdCI)) {
-      for (unsigned index = 0; index < Data.size(); index++) {
-        if ((Data[index].getIdCI()) == printIdCI) {
-          // Carregandos dados para gerar a impressão em arquivo
-          fileName = printIdCI;
-          fileName += ".txt";
-          printIdCI = Data[index].getIdCI();
-          printDateCI = Data[index].getDateCI();
-          printSenderCI = Data[index].getSenderCI();
-          printRecipientCI = Data[index].getRecipientCI();
-          printSubjectCI = Data[index].getSubjectCI();
-          printMessageCI = Data[index].getMessageCI();
-        }
-      }
-
-      // Rotina que faz impressão de acordo com a escolha
-      printThis.printFileCI(fileName, printIdCI, printSenderCI, printRecipientCI, printSubjectCI, printDateCI, printMessageCI);
+      
+      // Rotina para separar dados que serão enviados para impressão 
+      formToPrint(fileName, printIdCI, printSenderCI, printRecipientCI, printSubjectCI, printDateCI, printMessageCI);
     }
     successfulMessage();
     
   }
   else
     emptyMessage();
+}
+
+// Fazendo a separação e edição do que será impresso.
+void Form::formToPrint(string fileName, string printIdCI, string printSenderCI, string printRecipientCI, string printSubjectCI, string printDateCI, string printMessageCI) {
+  for (unsigned index = 0; index < Data.size(); index++) {
+    if ((Data[index].getIdCI()) == printIdCI) {
+      // Carregandos dados para gerar a impressão em arquivo
+      fileName = printIdCI;
+      fileName += ".txt";
+      printIdCI = Data[index].getIdCI();
+      printDateCI = Data[index].getDateCI();
+      printSenderCI = Data[index].getSenderCI();
+      printRecipientCI = Data[index].getRecipientCI();
+      printSubjectCI = Data[index].getSubjectCI();
+      printMessageCI = Data[index].getMessageCI();
+    }
+  }
+
+  printThis.printFileCI(fileName, printIdCI, printSenderCI, printRecipientCI, printSubjectCI, printDateCI, printMessageCI);
 }

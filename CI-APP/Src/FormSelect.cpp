@@ -13,7 +13,7 @@ using std::getline;
 using std::endl;
 using std::string;
 using std::setw; // setw() é uma função para alinhar a largura
-using std::left; // alinha a esquerda
+using std::left; // Alinhar a esquerda
 
 
 void Form::formSelect() {

@@ -40,15 +40,23 @@ void Form::formDelete() {
     // Caso confirmado a existência do identificado, apaga-se a posição que o mesmo está alocado
     // Sendo assim, todo os registros (toda CI) são apagados nesta posição
     if (formSelect(idCI)) {
-      for (unsigned index = 0; index < Data.size(); index++) {
-        if ((Data[index].getIdCI()) == idCI) {
-          Data.erase(Data.begin() + index);
-        }
-      }
+      
+      // Rotina de enviar ID. para selação de dados a serem excluídos
+      formDelete(idCI);
     }
     successfulMessage();
     
   }
   else
     emptyMessage();
+}
+
+// Faz a remoção do registro conforme a igualdade entre ID, já testada.
+void Form::formDelete(string idCI) {
+  for (unsigned index = 0; index < Data.size(); index++) {
+    if ((Data[index].getIdCI()) == idCI) {
+      Data.erase(Data.begin() + index);
+    }
+  }
+
 }

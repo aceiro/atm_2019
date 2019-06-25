@@ -28,12 +28,6 @@ void QAModule::createTest(string testIdCI, string testSenderCI, string testRecip
   assert((testForm.auxValidateInput(testRecipientCI, SENDER_RECIPIENT_SUBJECT_SIZE)) == true);
   assert((testForm.auxValidateInput(testSubjectCI, SENDER_RECIPIENT_SUBJECT_SIZE)) == true);
   assert((testForm.auxValidateInput(testMessageCI, MENSSAGE_SIZE)) == true);
-
-  // // Rotina de atribuição de dados (para receber dados, teste 2 vezes -- Verificar a necessidade)
-  // testSenderCI = testForm.auxValidateInput(testSenderCI, SENDER_RECIPIENT_SUBJECT_SIZE);
-  // testRecipientCI = testForm.auxValidateInput(testRecipientCI, SENDER_RECIPIENT_SUBJECT_SIZE);
-  // testSubjectCI = testForm.auxValidateInput(testSubjectCI, SENDER_RECIPIENT_SUBJECT_SIZE);
-  // testMessageCI = testForm.auxValidateInput(testMessageCI, MENSSAGE_SIZE);
   
   // Submissão do dados para o formulário. 
   testForm.formCreate(testIdCI, testSenderCI, testRecipientCI, testSubjectCI, testDateCI, testMessageCI);
@@ -77,16 +71,21 @@ void QAModule::updateTest(string testIdCI, string testSenderCI, string testRecip
 
 // Testar a Exclusão de Dados
 void QAModule::deleteTest(string testIdCI) {
+  // Teste para verificar se os dados podem ser recuperados
+  assert((testForm.formSelect(testIdCI)) == true);
 
+  // Realizando a exclusão do dado solicitado
+  testForm.formDelete(testIdCI);
+
+  // Teste para verificar se os dados não podem ser recuperados ("false" é nossa intenção agora)
+  assert((testForm.formSelect(testIdCI)) == false);
 }
 
 // Testar a Impressão de Dados
 void QAModule::printTest(string testIdCI) {
+  // Teste para verificar se os dados podem ser recuperados
+  assert((testForm.formSelect(testIdCI)) == true);
 
-}
-
-// Testar a Capacidade de Armazenamento de Dados
-// Neste ponto a Métrica: 20 entradas, baseado em que o programa é armazenado em memória
-int QAModule::capacityTest(string testIdCI, string testDateCI, string testSenderCI, string testRecipient, string testSubject, string testMessage) {
-
+  // Submissão dos dados para impressão 
+  testForm.formToPrint(testPrintCI, testIdCI, testSenderCI, testRecipientCI, testSubjectCI, testDateCI, testMessageCI);
 }

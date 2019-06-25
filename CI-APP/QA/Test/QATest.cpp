@@ -7,7 +7,6 @@
 #include "../Module/QAModule.hpp" // Classe Funções (Métodos) Testes
 #include "../../Include/Components.hpp" // Classe Funções (Métodos) auxiliares (Pause, Limpa tela, etc...)
 #include "../../Include/Form.hpp" // Classe Funções (Métodos) Manipulação do CRUD
-#include "../../Include/PrintingModule.hpp" // Classe Funções (Métodos) Impressão
 
 // Uso refinado do Escopo STD
 using std::cout;
@@ -24,7 +23,6 @@ int main() {
   // Instanciando as Classes
   QAModule testApp;
   Form testAppForm;
-  PrintingModule testAppPrint;
   Components testAppComponents;
 
   // Váriaveis locais
@@ -35,7 +33,6 @@ int main() {
   string recSubjectCI;
   string recDateCI;
   string recMessageCI;
-  string recPrintCI;
   char optACI = '\0';
   char optBCI = '\0';
   char optCCI = '\0';
@@ -52,7 +49,7 @@ int main() {
   getline(cin, recRecipientCI);
   cout << "INSIRA O CAMPO [ ASSUNTO ]: ";
   getline(cin, recSubjectCI);
-  cout << "INSIRA O CAMPO [ MENSSAGEM ]: ";
+  cout << "INSIRA O CAMPO [ MENSAGEM ]: ";
   getline(cin, recMessageCI);
   recDateCI = testAppForm.getSystemDate();
   recIdCI = testAppForm.createIdCI();
@@ -69,7 +66,6 @@ int main() {
   cout << "ENTRE COM [ ID. ]: ";
   getline(cin, auxRecIdCI);
   testApp.selectTest(auxRecIdCI);
-  // testApp.selectTest("11002220033");
   cout << endl << endl << "\t\t" << "Teste 2 OK!!!" << endl << endl;
 
   testAppComponents.pauseScreen();
@@ -105,7 +101,7 @@ int main() {
   cin >> optDCI;
   cin.ignore();
   cout << "DIGITE ATUALIZAÇÃO PARA O CAMPO | MENSAGEM: |: ";
-  getline(cin, recSenderCI);
+  getline(cin, recMessageCI);
   testApp.updateTest(auxRecIdCI, recSenderCI, recRecipientCI, recSubjectCI, recDateCI, recMessageCI, optACI, optBCI, optCCI, optDCI);
   cout << endl << endl << "\t\t" << "Teste 3 OK!!!" << endl << endl;
 
@@ -115,6 +111,10 @@ int main() {
   cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
   // Teste em funções do módulo  Form (Delete)
   cout << "4 - TESTE DE EXCLUSÃO DE DADOS" << endl << endl;
+  cout << "USANDO O ID. " << recIdCI << " PARA TESTAR A CONSULTA DE DADOS." << endl;
+  cout << "ENTRE COM [ ID. ] PARA EXCLUSÃO: ";
+  getline(cin, auxRecIdCI);
+  testApp.deleteTest(auxRecIdCI);
   cout << endl << endl << "\t\t" << "Teste 4 OK!!!" << endl << endl;
 
   testAppComponents.pauseScreen();
@@ -123,15 +123,12 @@ int main() {
   cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
   // Teste em funções do módulo  PritingModule (print)
   cout << "5 - TESTE DE IMPRESSÃO DE DADOS" << endl << endl;
+  recDateCI = testAppForm.getSystemDate();
+  recIdCI = testAppForm.createIdCI();
+  cout << "USANDO O ID. " << recIdCI << " PARA TESTAR A CONSULTA DE DADOS." << endl;
+  testApp.createTest(recIdCI, recSenderCI, recRecipientCI, recSubjectCI, recDateCI, recMessageCI);
+  testApp.printTest(recIdCI);
   cout << endl << endl << "\t\t" << "Teste 5 OK!!!" << endl << endl;
-
-  testAppComponents.pauseScreen();
-  testAppComponents.clearScreen();
-
-  cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
-  // Teste em funções do módulo Form (específico para estrutura de dados nomeada como Data)
-  cout << "6 - TESTE DE CAPACIDADE DE ARMAZENAMENTO DE DADOS (20 REGISTROS)" << endl << endl;
-  cout << endl << endl << "\t\t" << "Teste 6 OK!!!" << endl << endl;
 
   testAppComponents.pauseScreen();
   testAppComponents.clearScreen();

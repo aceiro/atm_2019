@@ -23,7 +23,6 @@ OBJ = ./Obj
 SRC = ../Src
 MODULE = ./Module
 FORM = Form
-# FLAGS = -std=c++11 -Wall -Wextra -pedantic -O3
 FLAGS = -std=c++11
 QATest = QATest.exe
 
@@ -50,17 +49,19 @@ libtest:
 	ar -rcs $(LIB)/LibTest.a $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/Components.o $(OBJ)/$(FORM)Create.o $(OBJ)/$(FORM)Select.o $(OBJ)/$(FORM)Update.o $(OBJ)/$(FORM)Delete.o $(OBJ)/$(FORM)Data.o $(OBJ)/$(FORM)ToPrint.o $(OBJ)/QAModule.o
 
 
+# TAG 3
+# Gerando executável (programa)
 test:
 	$(CC) $(Test)/QATest.cpp $(LIB)/*.a -I $(INCLUDE_QA) $(FLAGS) -o $(BIN)/$(QATest)
 
 
-# TAG 3	
+# TAG 4	
 # Executa o programa (executável em ./Test/Bin/)
 run:
 	$(BIN)/$(QATest)
 
 
-# TAG 4
+# TAG 5
 # Limpa os arquivos objetos, bibliotecas e executáveis para um compilação "full".
 clean:
 	rm $(OBJ)/*.o
