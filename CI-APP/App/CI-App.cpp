@@ -33,7 +33,7 @@ int main() {
   string option;
   
   // Rotina de título do Menutemplate (Ferramenta externa)
-  menu.Title = "\t\tCI-App beta 1.1.50";
+  menu.Title = "\t\tCI-App 1.0";
   menu.Description = "Mova setas (p/ Acima ou p/ Abaixo) para escolher uma opção: ";
   menu.setCursor(" -> ");
 
