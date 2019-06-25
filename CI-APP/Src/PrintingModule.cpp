@@ -1,16 +1,15 @@
-// Declaração das Bibliotecas internas do Projeto (declação das Classes)
-#include "../Include/PrintingModule.hpp"
-
 // Declaração das Bibliotecas internas do C++ 
 #include <iostream>
 #include <fstream> 
 #include <string>
 #include <iomanip>
 
+// Declaração das Bibliotecas internas do Projeto (declação das Classes)
+#include "../Include/PrintingModule.hpp"
+
 // Uso refinado do Escopo STD
 using std::cout;
 using std::cin;
-// using std::getline;
 using std::endl;
 using std::string;
 using std::ofstream; // "ofstream" é escopo para criar/escrever um arquivo

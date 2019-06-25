@@ -24,7 +24,6 @@ OBJ = ./Obj
 SRC = ./Src
 FORM = Form
 FLAGS = -std=c++11
-# FLAGS = -O3 -Wall -std=c++11
 CI-APP = CI-App.exe
 
 
@@ -39,9 +38,8 @@ all: libutils libform libextern app
 libutils:
 	$(CC) -c $(SRC)/Help.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/Help.o
 	$(CC) -c $(SRC)/PrintingModule.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/PrintingModule.o
-	$(CC) -c $(SRC)/QAModule.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/QAModule.o
 	$(CC) -c $(SRC)/Components.cpp -I $(INCLUDE) $(FLAGS) -o $(OBJ)/Components.o
-	ar -rcs $(LIB)/LibUtils.a $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/QAModule.o $(OBJ)/Components.o
+	ar -rcs $(LIB)/LibUtils.a $(OBJ)/Help.o $(OBJ)/PrintingModule.o $(OBJ)/Components.o
 
 
 # TAG 3
