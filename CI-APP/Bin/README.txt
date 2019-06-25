@@ -95,15 +95,17 @@ Utilização
       Exibe este texto de ajuda.
 
     -Finalizar o Programa:
-      Finaliza a execução do programa, e limpa os dados em memória (você trabalhar com o programa aberto, master
+      Finaliza a execução do programa, e limpa os dados em memória (você poderá trabalhar com o programa aberto, mas 
       ao fechá-los, os dados são perdidos).
 
 Módulo de Testes
   O Módulo de Teste é implementado em um nível de desenvovlimento. Caso queira utilizá-lo, recomendamos consultar
-  a Documentação do Projeto para mais informações.
+  a Documentação do Projeto para mais informações. Porém, via de regra, no módulo de testes, implementamos a função
+  "assert" [5], nos módulos do CRUD (Create, Read/Select, Update, Delete).
 
 Referências:
   [1] - https://github.com/aceiro/atm_2019
   [2] - https://github.com/aceiro/atm_2019/blob/master/ci.png
   [3] - https://github.com/aceiro/atm_2019.git
   [4] - https://github.com/aceiro/atm_2019/blob/master/ATIVIDADES_MULTIDISCIPLINARES_2_2019.pdf
+  [5] - http://www.cplusplus.com/reference/cassert/assert/
