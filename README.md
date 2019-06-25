@@ -30,7 +30,7 @@ A Tabela a seguir ilustra as datas que devem ser organizas através do Kanban [C
 | 04/05/2019 | [Atividade 2](https://github.com/aceiro/atm_2019/tree/master/CI-APP/Doc/Activ-2) |
 | 18/05/2019 | [Atividade 3](https://github.com/aceiro/atm_2019/tree/master/CI-APP/Doc/Activ-3) |
 | 01/06/2019 | [Atividade 4](https://github.com/aceiro/atm_2019/tree/master/CI-APP/Doc/Activ-4) |
-| 08/06/2019 | Entrega |
+| 08/06/2019 | [Entrega](https://github.com/gismarb/atm_2019/tree/master/CI-APP) |
 
 
 ### Fontes
