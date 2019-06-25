@@ -9,7 +9,6 @@
 #include "../Include/Help.hpp" // Classe Funções (Métodos) Ajuda/Sobre o sistema
 #include "../Include/Form.hpp" // Classe Funções (Métodos) Manipulação do CRUD
 #include "../Include/PrintingModule.hpp" // Classe Funções (Métodos) Impressão
-#include "../Include/QAModule.hpp" // Classe Funções (Métodos) Testes
 
 // Padrões usados para a entradas do Menu, e tudo relacionado.
 #define END "Finalizar o Programa"
@@ -17,7 +16,6 @@
 // Uso refinado do Escopo STD
 using std::cout;
 using std::endl;
-using std::right;
 using std::string;
 
 // Estrutura do Código Main

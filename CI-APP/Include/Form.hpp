@@ -81,7 +81,9 @@ class Form {
     void formUpdate();
     void formUpdate(string idCI, string fieldCI, int idField);
     void formDelete();
+    void formDelete(string idCI);
     void formToPrint();
+    void formToPrint(string fileName, string printIdCI, string printSenderCI, string printRecipientCI, string printSubjectCI, string printDateCI, string printMessageCI);
 
     // Método de geração de data
     string getSystemDate();

@@ -18,7 +18,7 @@ using std::ifstream; // Container para utilizar abertura e leitura de arquivos e
 
 // Declaração da Classe de Ajuda
 class Help {
-  // Aqui, "fileHelp" será um arquivo que será o README.txt
+  // Aqui, "helpFile" será um arquivo que será o README.txt
   private:
     // Atributo responsável pela abertura do arquivo.
     ifstream helpFile;
