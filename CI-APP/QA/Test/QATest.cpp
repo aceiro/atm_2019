@@ -22,24 +22,28 @@ int main() {
   setlocale(LC_ALL,"pt_BR_utf8");
 
   // Instanciando as Classes
-  QAModule test;
-  Form testForm;
-  PrintingModule testPrint;
-  Components testComp;
+  QAModule testApp;
+  Form testAppForm;
+  PrintingModule testAppPrint;
+  Components testAppComponents;
 
   // Váriaveis locais
   string recIdCI;
+  string auxRecIdCI;
   string recSenderCI;
   string recRecipientCI;
   string recSubjectCI;
   string recDateCI;
   string recMessageCI;
   string recPrintCI;
+  char optACI = '\0';
+  char optBCI = '\0';
+  char optCCI = '\0';
+  char optDCI = '\0';
 
-  testComp.clearScreen();
+  testAppComponents.clearScreen();
   
   cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
-  
   // Teste em funções do módulo  Form (Create)
   cout << "1 - TESTE DE ENTRADA DE DADOS" << endl << endl;
   cout << "INSIRA O CAMPO [ DE ]: ";
@@ -50,35 +54,87 @@ int main() {
   getline(cin, recSubjectCI);
   cout << "INSIRA O CAMPO [ MENSSAGEM ]: ";
   getline(cin, recMessageCI);
-  recDateCI = testForm.getSystemDate();
-  recIdCI = testForm.createIdCI();
-  test.createTest(recIdCI, recSenderCI, recRecipientCI, recSubjectCI, recDateCI, recMessageCI);
+  recDateCI = testAppForm.getSystemDate();
+  recIdCI = testAppForm.createIdCI();
+  testApp.createTest(recIdCI, recSenderCI, recRecipientCI, recSubjectCI, recDateCI, recMessageCI);
   cout << endl << endl << "\t\t" << "Teste 1 OK!!!" << endl << endl;
   
-  testComp.pauseScreen();
-  testComp.clearScreen();
+  testAppComponents.pauseScreen();
+  testAppComponents.clearScreen();
 
+  cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
   // Teste em funções do módulo  Form (Select)
   cout << "2 - TESTE DE CONSULTA DE DADOS" << endl << endl;
-  
   cout << "USANDO O ID. " << recIdCI << " PARA TESTAR A CONSULTA DE DADOS." << endl;
-  testComp.pauseScreen();
-  test.selectTest(recIdCI);
+  cout << "ENTRE COM [ ID. ]: ";
+  getline(cin, auxRecIdCI);
+  testApp.selectTest(auxRecIdCI);
+  // testApp.selectTest("11002220033");
   cout << endl << endl << "\t\t" << "Teste 2 OK!!!" << endl << endl;
 
+  testAppComponents.pauseScreen();
+  testAppComponents.clearScreen();
+
+  cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
   // Teste em funções do módulo  Form (Update)
   cout << "3 - TESTE DE ATUALIZAÇÃO DE DADOS" << endl << endl;
+  cout << "AQUI, ENTRE DA SEGUINTE FORMA:" << endl;
+  cout <<  "\t[ A ] - Campo [ DE: ]" << endl;
+  cout <<  "\t[ B ] - Campo [ PARA: ]" << endl;
+  cout <<  "\t[ C ] - Campo [ ASSUNTO: ]" << endl;
+  cout <<  "\t[ D ] - Campo [ MENSAGEM: ]" << endl;
+  cout << "USANDO O ID. " << recIdCI << " PARA TESTAR A CONSULTA DE DADOS." << endl;
+  cout << "ENTRE COM [ ID. ]: ";
+  getline(cin, auxRecIdCI);
+  cout << "DIGITE | A ou a|: ";
+  cin >> optACI;
+  cin.ignore();
+  cout << "DIGITE ATUALIZAÇÃO PARA O CAMPO | DE: |: ";
+  getline(cin, recSenderCI);
+  cout << "DIGITE | B ou b |: ";
+  cin >> optBCI;
+  cin.ignore();
+  cout << "DIGITE ATUALIZAÇÃO PARA O CAMPO | PARA: |: ";
+  getline(cin, recRecipientCI);
+  cout << "DIGITE | C ou c |: ";
+  cin >> optCCI;
+  cin.ignore();
+  cout << "DIGITE ATUALIZAÇÃO PARA O CAMPO | ASSUNTO: |: ";
+  getline(cin, recSubjectCI);
+  cout << "DIGITE | D ou d |: ";
+  cin >> optDCI;
+  cin.ignore();
+  cout << "DIGITE ATUALIZAÇÃO PARA O CAMPO | MENSAGEM: |: ";
+  getline(cin, recSenderCI);
+  testApp.updateTest(auxRecIdCI, recSenderCI, recRecipientCI, recSubjectCI, recDateCI, recMessageCI, optACI, optBCI, optCCI, optDCI);
   cout << endl << endl << "\t\t" << "Teste 3 OK!!!" << endl << endl;
 
+  testAppComponents.pauseScreen();
+  testAppComponents.clearScreen();
+
+  cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
   // Teste em funções do módulo  Form (Delete)
   cout << "4 - TESTE DE EXCLUSÃO DE DADOS" << endl << endl;
   cout << endl << endl << "\t\t" << "Teste 4 OK!!!" << endl << endl;
+
+  testAppComponents.pauseScreen();
+  testAppComponents.clearScreen();
+
+  cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
   // Teste em funções do módulo  PritingModule (print)
   cout << "5 - TESTE DE IMPRESSÃO DE DADOS" << endl << endl;
   cout << endl << endl << "\t\t" << "Teste 5 OK!!!" << endl << endl;
 
+  testAppComponents.pauseScreen();
+  testAppComponents.clearScreen();
+
+  cout << endl << endl << "\t\t" << QAMODULE_TITLE << endl << endl;
+  // Teste em funções do módulo Form (específico para estrutura de dados nomeada como Data)
   cout << "6 - TESTE DE CAPACIDADE DE ARMAZENAMENTO DE DADOS (20 REGISTROS)" << endl << endl;
   cout << endl << endl << "\t\t" << "Teste 6 OK!!!" << endl << endl;
+
+  testAppComponents.pauseScreen();
+  testAppComponents.clearScreen();
 
   return 0;
 }
