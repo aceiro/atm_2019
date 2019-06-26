@@ -113,7 +113,7 @@ string Form::createIdCI() {
   // ano(4)%mes(2)%dia(2)%hora(2)%minuto(2)%segundo(2)
   // Exemplo: sendo hoje 23/10/1989 e agora 10:35:56
   // 23101989103556
-  strftime(cd, DATE_SIZE, "%Y%m%d%H%M%s", timeInfo);
+  strftime(cd, DATE_SIZE, "%Y%m%d%H%M%S", timeInfo);
 
   // retornamos nossa string, para que seja usada no restante do programa
   sCd = cd;
